@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>企画提案書 - プロジェクトアーカイブ</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <button class="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="page-wrapper">
+    <aside class="sidebar" data-nav-level="docs"></aside>
+
+    <main class="main-content">
+      <header class="doc-header">
+        <div class="doc-category">DOCUMENT 01</div>
+        <h1 class="doc-title">企画提案書</h1>
+        <div class="doc-meta">
+          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-XX-XX</span>
+          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
+        </div>
+      </header>
+
+      <div class="doc-body">
+
+        <div class="external-link-box">
+          <div class="external-link-box-title">
+            <span class="material-symbols-outlined">link</span>
+            詳細ドキュメント
+          </div>
+          <div class="external-link-box-desc">
+            このページは概要のみを記載しています。詳細な企画提案書は<a
+              href="https://drive.google.com/file/d/1WjanfXxwV-8Wz18Cgac6dSIbGQPOYA3u/view?usp=drive_link"> こちらのリンク
+            </a>からご確認ください。
+          </div>
+        </div>
+
+        <div class="toc">
+          <div class="toc-title">目次</div>
+          <ol class="toc-list">
+            <li><a href="#sec1">プロジェクト概要</a></li>
+            <li><a href="#sec2">背景と課題</a></li>
+            <li><a href="#sec3">提案するソリューション</a></li>
+            <li><a href="#sec4">制作範囲</a></li>
+            <li><a href="#sec5">使用技術</a></li>
+            <li><a href="#sec6">スケジュール</a></li>
+          </ol>
+        </div>
+
+        <section class="section" id="sec1">
+          <h2 class="section-title"><span class="section-icon">1</span> プロジェクト概要</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">サービス名</div>
+            <p>香水メーカー（仮名称：c-corp）ワークショップ関連ページ改修。</p>
+          </div>
+          <div class="fill-block">
+            <div class="fill-label">概要</div>
+            <p>ワークショップ申込数の伸び悩みを課題とする香水メーカーからのWebサイト改修相談。スピード感を求められているため、2フェーズにわけて実施するものとする。</p>
+            <p>
+              Phase 1：従来の2カラム構成は維持しつつ、分散していた情報を整理。ブランド既製品との相乗効果（シャワー効果）を意図し、トーンを高級路線へ再設計。<br>
+              Phase 2：外部システム依存となっていた予約システムの構築。（既存メルマガ登録用システムに機能追加する想定）</p>
+          </div>
+          <div class="fill-block">
+            <div class="fill-label">ターゲットユーザー</div>
+            <p>香水ワークショップに興味関心を持つ層。</p>
+          </div>
+
+        </section>
+
+        <section class="section" id="sec2">
+          <h2 class="section-title"><span class="section-icon">2</span> 背景と課題</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">市場の現状</div>
+            <p>
+              2025年から2034年にかけて、市場は年平均成長率（CAGR）7.40%で成長すると予測されている。また、「自分らしさ」を重視するZ世代により、パーソナライズ香水の需要が拡大していると考えられる。（参照：H&Iグローバルリサーチ株式会社<a
+                href="https://www.globalresearch.co.jp/reports/japan-perfume-market-expert/?utm_source=chatgpt.com">2025年12月3日「香水の日本市場：香水、オーデコロン（EDC）、オードパルファム（EDP）、オーデトワレ（EDT）、その他2025年～2034年」
+              </a>）</p>
+            <p>
+              一方で、他国とは異なり、日本では歴史的に「無臭であること」が清潔・礼儀と結びついている点に注意が必要であると考えられる。また、現代においては「スメハラ」「香害」という言葉に代表されるように「強い香り」に忌避感を抱く場合がある。
+            </p>
+          </div>
+          <div class="fill-block">
+            <div class="fill-label">解決すべき課題 </div>
+            <p>ワークショップ申込数の改善</p>
+          </div>
+
+        </section>
+
+        <section class="section" id="sec3">
+          <h2 class="section-title"><span class="section-icon">3</span> 提案するソリューション</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">サービスの特長</div>
+            <p>ブレンデッドではないアロマオイルを使用<br>
+              熟練の調香師がサポート<br>
+              整えられた空間で実施</p>
+          </div>
+
+        </section>
+
+        <section class="section" id="sec4">
+          <h2 class="section-title"><span class="section-icon">4</span> 制作範囲</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">Webサイト（フロントエンド）の範囲</div>
+            <p>index.html<br>
+              about.html<br>
+              brands.html<br>
+              workshop.html<br>
+              workshop/casual.html<br>
+              workshop/holliday.html<br>
+              workshop/registration.html<br>
+              magazine.html<br>
+              magazine/001.html<br>
+              magazine/002.html<br>
+              press.html<br>
+              press/website-renewal.html<br>
+              press/solar-terms.html<br>
+              mail.html</p>
+          </div>
+          <div class="fill-block">
+            <div class="fill-label">Webアプリケーション（サーバーサイド）の範囲 <span class="required">必須</span></div>
+            <div class="fill-hint">制作するWebアプリケーションの機能概要</div>
+            <div class="fill-content">
+              <p>（Webアプリの機能一覧を記載）</p>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="section" id="sec5">
+          <h2 class="section-title"><span class="section-icon">5</span> 使用技術</h2>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>区分</th>
+                <th>技術</th>
+                <th>用途</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="template-row">
+                <td>フロントエンド</td>
+                <td>HTML / CSS / JavaScript</td>
+                <td>Webサイト構築</td>
+              </tr>
+              <tr class="template-row">
+                <td>バックエンド</td>
+                <td>Java / Spring Boot</td>
+                <td>Webアプリケーション</td>
+              </tr>
+              <tr class="template-row">
+                <td>デザインツール</td>
+                <td>Figma</td>
+                <td>ワイヤーフレーム</td>
+              </tr>
+              <tr class="template-row">
+                <td>バージョン管理</td>
+                <td>Git / GitHub</td>
+                <td>ソースコード管理・公開</td>
+              </tr>
+              <tr class="template-row">
+                <td>AI活用</td>
+                <td>ChatGPT</td>
+                <td>プロンプトプログラミング</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </section>
+
+        <section class="section" id="sec6">
+          <h2 class="section-title"><span class="section-icon">6</span> スケジュール</h2>
+          <img src="../image/SS_ccorp_schedule.png">
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サイトマップ - プロジェクトアーカイブ</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <button class="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="page-wrapper">
+    <aside class="sidebar" data-nav-level="docs"></aside>
+
+    <main class="main-content">
+      <header class="doc-header">
+        <div class="doc-category">DOCUMENT 02</div>
+        <h1 class="doc-title">サイトマップ</h1>
+        <div class="doc-meta">
+          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-XX-XX</span>
+          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
+        </div>
+      </header>
+
+      <div class="doc-body">
+
+        <div class="toc">
+          <div class="toc-title">目次</div>
+          <ol class="toc-list">
+            <li><a href="#sec1">サイト構造図</a></li>
+            <li><a href="#sec2">ページ一覧</a></li>
+            <li><a href="#sec3">ユーザーフロー</a></li>
+            <li><a href="#sec4">URL設計</a></li>
+          </ol>
+        </div>
+
+        <section class="section" id="sec1">
+          <h2 class="section-title"><span class="section-icon">1</span> サイト構造図</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">Webサイト構造図</div>
+            <p>index.html<br>
+              about.html<br>
+              brands.html<br>
+              workshop.html<br>
+              ├ workshop/casual.html<br>
+              ├ workshop/holiday.html<br>
+              └ workshop/registration.html<br>
+              magazine.html<br>
+              ├ magazine/001.html<br>
+              └ magazine/002.html<br>
+              press.html<br>
+              ├ press/website-renewal.html<br>
+              └ press/solar-terms.html<br>
+              mail.html
+            </p>
+          </div>
+          <div class="fill-block">
+            <div class="fill-label">Webアプリケーション構造図 <span class="required">必須</span></div>
+            <p>
+              ├─ / （RootRedirectControllerで /index.html へリダイレクト）<br>
+              ├─ /index.html （公開トップ/API案内）<br>
+              ├─ /login.html （管理ログイン画面）<br>
+              │ ├─ /login.html?error （ログイン失敗時）<br>
+              │ └─ /login.html?logout （ログアウト後）<br>
+              └─ /admin.html （管理画面・ADMIN権限必須）<br>
+              ├─ 予約確認タブ<br>
+              │ ├─ 今週の予約状況（件数）<br>
+              │ ├─ 当月の予約受付数推移<br>
+              │ └─ 予約一覧<br>
+              └─ メルマガタブ<br>
+              ├─ 現在の登録者数<br>
+              ├─ 当月の登録/配信停止推移<br>
+              └─ メール登録一覧</p>
+          </div>
+
+        </section>
+
+        <section class="section" id="sec2">
+          <h2 class="section-title"><span class="section-icon">2</span> ページ一覧</h2>
+          <div class="fill-block">
+            <div class="fill-label">Webサイト ページ一覧</div>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>URL</th>
+                  <th>ページ名</th>
+                  <th>ページの目的</th>
+                  <th>主要コンテンツ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="template-row">
+                  <td>index.html</td>
+                  <td>c-corp</td>
+                  <td>トップ</td>
+                  <td>ナビゲーション</td>
+                </tr>
+                <tr class="template-row">
+                  <td>about.html</td>
+                  <td>Abous us</td>
+                  <td>概要</td>
+                  <td>自社概要</td>
+                </tr>
+                <tr class="template-row">
+                  <td>brands.html</td>
+                  <td>Brands</td>
+                  <td>既製品紹介</td>
+                  <td>既製品紹介</td>
+                </tr>
+                <tr class="template-row">
+                  <td>workshop.html</td>
+                  <td>Workshop</td>
+                  <td>ワークショップトップ</td>
+                  <td>ワークショップサマリー</td>
+                </tr>
+                <tr class="template-row">
+                  <td>workshop/casual.html</td>
+                  <td>Workshop Fragrance Short Session</td>
+                  <td>ワークショップ（香りのショートセッション）</td>
+                  <td>ワークショップ詳細</td>
+                </tr>
+                <tr class="template-row">
+                  <td>workshop/holiday.html</td>
+                  <td>Fragrance Making Workshop</td>
+                  <td>ワークショップ（フレグランス調香体験）</td>
+                  <td>ワークショップ詳細</td>
+                </tr>
+                <tr class="template-row">
+                  <td>workshop/registration.html</td>
+                  <td>Workshop Reservation</td>
+                  <td>ワークショップ（調香体験）申込</td>
+                  <td>ワークショップ申込</td>
+                </tr>
+                <tr class="template-row">
+                  <td>magazine.html</td>
+                  <td>Magazine</td>
+                  <td>よみものトップ</td>
+                  <td>よみもの一覧</td>
+                </tr>
+                <tr class="template-row">
+                  <td>magazine/001.html</td>
+                  <td>香りは、記憶になる。香水が人生に残る理由 - Magazine</td>
+                  <td>よみもの記事</td>
+                  <td>よみもの記事</td>
+                </tr>
+                <tr class="template-row">
+                  <td>magazine/002.html</td>
+                  <td>自分の香りを知るという、新しい自己表現 - Magazine</td>
+                  <td>よみもの記事</td>
+                  <td>よみもの記事</td>
+                </tr>
+                <tr class="template-row">
+                  <td>press.html</td>
+                  <td>Press Release</td>
+                  <td>プレスリリーストップ</td>
+                  <td>プレスリリース一覧</td>
+                </tr>
+                <tr class="template-row">
+                  <td>press/website-renewal.html</td>
+                  <td>サイトをリニューアルしました</td>
+                  <td>プレスリリース記事</td>
+                  <td>プレスリリース記事</td>
+                </tr>
+                <tr class="template-row">
+                  <td>press/solar-terms.html</td>
+                  <td>四季の移ろいを香りで纏うフレグランスシリーズ「Solar Terms」誕生</td>
+                  <td>プレスリリース記事</td>
+                  <td>プレスリリース記事</td>
+                </tr>
+                <tr class="template-row">
+                  <td>mail.html</td>
+                  <td>Mail Magazine</td>
+                  <td>メールマガジン登録/削除</td>
+                  <td>メールマガジン登録/削除</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+          <div class="fill-block">
+            <div class="fill-label">Webアプリ 画面一覧 <span class="required">必須</span></div>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>URL</th>
+                  <th>画面名</th>
+                  <th>画面の目的</th>
+                  <th>主要機能</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="template-row">
+                  <td>/</td>
+                  <td>ルート入口</td>
+                  <td>利用者をトップ画面へ誘導する</td>
+                  <td>/index.html へリダイレクト</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/index.html</td>
+                  <td>公開トップ（API案内）</td>
+                  <td>公開側の入口ページとして基本案内を表示する</td>
+                  <td>API利用例の表示</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/login.html</td>
+                  <td>管理ログイン</td>
+                  <td>管理画面利用者の認証を行う</td>
+                  <td>ID/パスワード入力、ログイン実行、エラー/ログアウトメッセージ表示</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/admin.html</td>
+                  <td>管理画面（Backoffice）</td>
+                  <td>予約情報とメルマガ登録状況を運用管理する</td>
+                  <td>ログインユーザー表示、ログアウト、再読み込み、タブ切替（予約確認/メルマガ）、各種一覧・集計表示</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </section>
+
+        <section class="section" id="sec3">
+          <h2 class="section-title"><span class="section-icon">3</span> ユーザーフロー</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">メインシナリオ</div>
+            <p>index.html<br>
+              ↓<br>
+              workshop.html<br>
+              ↓<br>
+              workshop/holliday.html<br>
+              ↓<br>
+              workshop/registration.html
+            </p>
+          </div>
+        </section>
+
+        <section class="section" id="sec4">
+          <h2 class="section-title"><span class="section-icon">4</span> URL設計</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">URL一覧</div>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>URL</th>
+                  <th>HTTPメソッド</th>
+                  <th>画面/機能</th>
+                  <th>説明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="template-row">
+                  <td>index.html</td>
+                  <td>GET</td>
+                  <td>トップ</td>
+                  <td>トップ</td>
+                </tr>
+                <tr class="template-row">
+                  <td>about.html</td>
+                  <td>GET</td>
+                  <td>会社概要</td>
+                  <td>会社概要</td>
+                </tr>
+                <tr class="template-row">
+                  <td>brands.html</td>
+                  <td>GET</td>
+                  <td>既製品紹介</td>
+                  <td>既製品紹介</td>
+                </tr>
+                <tr class="template-row">
+                  <td>workshop.html</td>
+                  <td>GET</td>
+                  <td>ワークショップトップ</td>
+                  <td>ワークショップトップ</td>
+                </tr>
+                <tr class="template-row">
+                  <td>workshop/casual.html</td>
+                  <td>GET</td>
+                  <td>ワークショップ（ショートセッション）</td>
+                  <td>ワークショップ（ショートセッション）</td>
+                </tr>
+                <tr class="template-row">
+                  <td>workshop/holiday.html</td>
+                  <td>GET</td>
+                  <td>ワークショップ（調香体験）</td>
+                  <td>ワークショップ（調香体験）</td>
+                </tr>
+                <tr class="template-row">
+                  <td>workshop/registration.html</td>
+                  <td>GET</td>
+                  <td>ワークショップ（調香体験）申込</td>
+                  <td>ワークショップ（調香体験）申込</td>
+                </tr>
+                <tr class="template-row">
+                  <td>magazine.html</td>
+                  <td>GET</td>
+                  <td>よみものトップ</td>
+                  <td>よみものトップ</td>
+                </tr>
+                <tr class="template-row">
+                  <td>magazine/001.html</td>
+                  <td>GET</td>
+                  <td>よみもの詳細</td>
+                  <td>よみもの詳細</td>
+                </tr>
+                <tr class="template-row">
+                  <td>magazine/002.html</td>
+                  <td>GET</td>
+                  <td>よみもの詳細</td>
+                  <td>よみもの詳細</td>
+                </tr>
+                <tr class="template-row">
+                  <td>press.html</td>
+                  <td>GET</td>
+                  <td>プレスリリーストップ</td>
+                  <td>プレスリリーストップ</td>
+                </tr>
+                <tr class="template-row">
+                  <td>press/website-renewal.html</td>
+                  <td>GET</td>
+                  <td>プレスリリース詳細</td>
+                  <td>プレスリリース詳細</td>
+                </tr>
+                <tr class="template-row">
+                  <td>press/solar-terms.html</td>
+                  <td>GET</td>
+                  <td>プレスリリース詳細</td>
+                  <td>プレスリリース詳細</td>
+                </tr>
+                <tr class="template-row">
+                  <td>mail.html</td>
+                  <td>GET</td>
+                  <td>メールマガジン登録</td>
+                  <td>メールマガジン登録</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="fill-label">URL一覧（reservation-app）</div>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>URL</th>
+                  <th>HTTPメソッド</th>
+                  <th>画面/機能</th>
+                  <th>説明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="template-row">
+                  <td>/</td>
+                  <td>GET</td>
+                  <td>ルート導線</td>
+                  <td> `index.html` へリダイレクトする入口。</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/index.html</td>
+                  <td>GET</td>
+                  <td>公開トップ画面</td>
+                  <td>サービス案内・API利用導線を表示する公開ページ。</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/login.html</td>
+                  <td>GET</td>
+                  <td>管理ログイン画面</td>
+                  <td>管理者の認証入力画面（エラー/ログアウト表示含む）。</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/admin.html</td>
+                  <td>GET</td>
+                  <td>管理画面（Backoffice）</td>
+                  <td>予約・メルマガ情報の確認、集計表示、再読込、ログアウトを行う。</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/login</td>
+                  <td>POST</td>
+                  <td>ログイン処理</td>
+                  <td>Spring Securityの認証処理を実行し、成功時は管理画面へ遷移。</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/logout</td>
+                  <td>POST</td>
+                  <td>ログアウト処理</td>
+                  <td>セッションを破棄してログイン画面へ遷移。</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/api/reservations/availability</td>
+                  <td>GET</td>
+                  <td>空き枠照会API</td>
+                  <td>コース・期間条件で予約可能枠を取得する。</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/api/reservations</td>
+                  <td>POST</td>
+                  <td>予約登録API</td>
+                  <td>予約情報を登録し、予約番号を返却する。</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/api/mail/subscriptions/register</td>
+                  <td>POST</td>
+                  <td>メルマガ登録API</td>
+                  <td>メールアドレスをメルマガ配信対象として登録する。</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/api/mail/subscriptions/unsubscribe</td>
+                  <td>POST</td>
+                  <td>メルマガ配信停止API</td>
+                  <td>メールアドレスの配信停止を登録する。</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/api/admin/reservations</td>
+                  <td>GET</td>
+                  <td>管理:予約一覧API</td>
+                  <td>管理画面向けに直近予約一覧を取得する。</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/api/admin/reservation-summary</td>
+                  <td>GET</td>
+                  <td>管理:予約集計API</td>
+                  <td>週次予約状況・月次推移などの集計情報を取得する。</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/api/admin/mail-subscriptions</td>
+                  <td>GET</td>
+                  <td>管理:メルマガ一覧API</td>
+                  <td>メルマガ登録/停止の一覧情報を取得する。</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/api/admin/mail-summary</td>
+                  <td>GET</td>
+                  <td>管理:メルマガ集計API</td>
+                  <td>月次の登録数・停止数推移を取得する。</td>
+                </tr>
+                <tr class="template-row">
+                  <td>/api/admin/me</td>
+                  <td>GET</td>
+                  <td>管理:ログインユーザーAPI</td>
+                  <td>現在ログイン中の管理ユーザー情報を取得する。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+
+</html>

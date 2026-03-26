@@ -63,7 +63,44 @@
           <div class="fill-label">テスト対象・範囲 <span class="required">必須</span></div>
           <div class="fill-hint">テストの対象となる機能・画面と、テストの種類</div>
           <div class="fill-content">
-            <p>（テスト計画を記載）</p>
+            <p><strong>機能一覧（仕様機能の整理）</strong></p>
+            <p>1. コーポレートサイト表示<br><code>index / about / brands / press / magazine</code></p>
+            <p>2. ワークショップ案内表示<br><code>workshop.html</code>、<code>workshop/casual.html</code>、<code>workshop/holiday.html</code></p>
+            <p>3. ワークショップ予約<br><code>workshop/registration.html</code></p>
+            <p>- コース選択<br>- 予約可能日表示（空き状況API連携）<br>- 時間枠選択<br>- 参加人数・連絡先入力<br>- 予約確定（予約番号表示）</p>
+            <p>4. メールマガジン<br><code>mail.html</code></p>
+            <p>- 登録<br>- 配信停止</p>
+            <p>5. 管理者ログイン<br><code>/login.html</code>（Spring Security）</p>
+            <p>6. 管理画面（Backoffice）<br><code>/admin.html</code></p>
+            <p>- 予約一覧<br>- 予約サマリ（週次・月次）<br>- メルマガ一覧<br>- メルマガサマリ（登録/停止推移）<br>- ログアウト</p>
+            <p>7. API</p>
+            <p>- 予約: <code>GET /api/reservations/availability</code>, <code>POST /api/reservations</code><br>- メルマガ: <code>POST /api/mail/subscriptions/register</code>, <code>POST /api/mail/subscriptions/unsubscribe</code><br>- 管理: <code>GET /api/admin/*</code></p>
+
+            <p><strong>テスト対象の範囲</strong></p>
+            <p>- 対象（In Scope）</p>
+            <p>- フロント画面の表示・入力・遷移<br>- 予約/メルマガのAPI連携<br>- 管理者認証と管理画面のデータ表示<br>- 入力バリデーション（必須、形式、上限）</p>
+            <p>- 非対象（Out of Scope）</p>
+            <p>- 本番インフラ監視、外部メール配信基盤の実配信品質<br>- 大規模負荷試験（必要なら別計画で実施）</p>
+
+            <p><strong>テスト種別</strong></p>
+            <p>1. 機能テスト</p>
+            <p>- 正常系: 予約作成、空き枠取得、メルマガ登録/停止、管理画面取得<br>- 異常系: 必須不足、不正メール形式、満席枠予約、未ログイン時の管理APIアクセス</p>
+            <p>2. 画面テスト</p>
+            <p>- 主要画面の表示崩れ、レスポンシブ、リンク遷移<br>- フォーム操作性（入力制限、エラー表示、モーダル表示）<br>- 管理画面タブ切替・再読み込み・ログアウト導線</p>
+            <p>3. セキュリティテスト</p>
+            <p>- 認証/認可: <code>/admin.html</code> と <code>/api/admin/*</code> のアクセス制御<br>- 入力値対策: XSS（表示エスケープ）、SQLインジェクション相当の不正入力<br>- CSRF/CORS/セッション周りの基本確認（ログアウト後アクセス不可など）</p>
+
+            <p><strong>テスト環境</strong></p>
+            <p>- OS</p>
+            <p>- Windows 11<br>- macOS 14以上</p>
+            <p>- ブラウザ</p>
+            <p>- Google Chrome 最新版<br>- Microsoft Edge 最新版<br>- Safari 最新版（macOS）<br>- 任意追加: Firefox 最新版（互換性確認）</p>
+            <p>- バックエンド</p>
+            <p>- Java 17<br>- Spring Boot（<code>reservation-app</code>）<br>- H2 Database</p>
+
+            <p><strong>テスト期間（例）</strong></p>
+            <p>- 2026年3月31日（火）〜 2026年4月2日（木）</p>
+            <p>3/31: テスト設計・観点レビュー<br>4/1: テスト実施<br>4/2: 再テスト、結果報告</p>
           </div>
         </div>
 

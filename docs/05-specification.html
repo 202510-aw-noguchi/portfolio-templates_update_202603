@@ -224,10 +224,8 @@
 
           <div class="fill-block">
             <div class="fill-label">画面遷移図 <span class="required">必須</span></div>
-            <div class="fill-hint">各画面間の遷移関係を図示</div>
-            <div class="fill-content">
-              <div class="ascii-diagram">
-                <pre>[公開サイト]
+            <div class="ascii-diagram">
+              <pre>[公開サイト]
   ┌─────────────┐
   │ index.html  │
   └─────┬───────┘
@@ -253,7 +251,6 @@
   └─────┬───────┘             └─────┬───────┘
         │ 認証失敗                   │ ログアウト
         └──── login.html?error      └──── login.html?logout</pre>
-              </div>
             </div>
           </div>
 
@@ -267,15 +264,11 @@
             <h3 class="subsection-title">機能仕様テンプレート（コピーして使用）</h3>
 
             <div class="fill-block">
-              <div class="fill-label">機能名：（機能名を入力） <span class="required">必須</span></div>
-              <div class="fill-hint">機能ID：F-XXX</div>
-              <div class="fill-content">
-                <p>（機能の詳細仕様を記載）</p>
-              </div>
-            </div>
-
-            <div class="fill-block">
-              <div class="fill-label">入力項目一覧 <span class="required">必須</span></div>
+              <div class="fill-label">機能名：空き枠照会</div>
+              <div class="fill-label">機能ID：F-001</div>
+              <p>指定コース・期間の日別/時間帯別の空き枠を返却する（GET /api/reservations/availability）</p>
+              <br>
+              <div class="fill-label">入力項目一覧：</div>
               <table class="doc-table">
                 <thead>
                   <tr>
@@ -288,60 +281,189 @@
                 </thead>
                 <tbody>
                   <tr class="template-row">
-                    <td>（項目名）</td>
-                    <td>（String / Integer / Date 等）</td>
-                    <td>（○ / —）</td>
-                    <td>（必須チェック / 文字数制限 等）</td>
-                    <td>（備考）</td>
+                    <td>course</td>
+                    <td>string</td>
+                    <td>○</td>
+                    <td>classic または luxe（前後空白除去・小文字化後）</td>
+                    <td>Queryパラメータ</td>
                   </tr>
                   <tr class="template-row">
-                    <td>…</td>
-                    <td>…</td>
-                    <td>…</td>
-                    <td>…</td>
-                    <td>…</td>
+                    <td>from</td>
+                    <td>date(YYYY-MM-DD)</td>
+                    <td>○</td>
+                    <td>ISO日付形式</td>
+                    <td>Queryパラメータ</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>to</td>
+                    <td>date(YYYY-MM-DD)</td>
+                    <td>○</td>
+                    <td>ISO日付形式</td>
+                    <td>Queryパラメータ</td>
                   </tr>
                 </tbody>
               </table>
-
             </div>
-          </div>
+
+            <div class="fill-block">
+              <div class="fill-label">機能名：予約登録</div>
+              <div class="fill-label">機能ID：F-002</div>
+              <p>予約を登録し、予約番号を採番して返却する（POST /api/reservations）</p>
+              <br>
+              <div class="fill-label">入力項目一覧：</div>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>項目名</th>
+                    <th>データ型</th>
+                    <th>必須</th>
+                    <th>バリデーション</th>
+                    <th>備考</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="template-row">
+                    <td>course</td>
+                    <td>string</td>
+                    <td>○</td>
+                    <td>@NotBlank、classic/luxe のみ</td>
+                    <td>JSON body</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>reserveDate</td>
+                    <td>date</td>
+                    <td>○</td>
+                    <td>@NotNull、当日・過去日不可（翌日以降）</td>
+                    <td>JSON body</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>reserveTime</td>
+                    <td>string</td>
+                    <td>○</td>
+                    <td>@NotBlank、10:00-11:00 / 14:00-15:00 / 16:00-17:00 のみ</td>
+                    <td>JSON body</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>participantCount</td>
+                    <td>int</td>
+                    <td>○</td>
+                    <td>@Min(1) @Max(20)、かつ残席数以下</td>
+                    <td>JSON body</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>contactName</td>
+                    <td>string</td>
+                    <td>○</td>
+                    <td>@NotBlank</td>
+                    <td>JSON body</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>contactPhone</td>
+                    <td>string</td>
+                    <td>○</td>
+                    <td>@NotBlank、^[0-9]{10,11}$</td>
+                    <td>ハイフンなし10〜11桁</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>contactEmail</td>
+                    <td>string</td>
+                    <td>○</td>
+                    <td>@NotBlank、@Email</td>
+                    <td>JSON body</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="fill-block">
+              <div class="fill-label">機能名：予約受付バリデーション</div>
+              <div class="fill-label">機能ID：F-003</div>
+              <p>予約登録時に業務ルール違反を検知しエラー返却する</p>
+              <br>
+              <div class="fill-label">入力項目一覧：</div>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>項目名</th>
+                    <th>データ型</th>
+                    <th>必須</th>
+                    <th>バリデーション</th>
+                    <th>備考</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="template-row">
+                    <td>「予約登録」の全項目</td>
+                    <td>-</td>
+                    <td>○</td>
+                    <td>日付範囲、時間帯、定員超過をサーバーで再検証</td>
+                    <td>409/400 を返却</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
         </section>
 
         <section class="section" id="sec5">
           <h2 class="section-title"><span class="section-icon">5</span> 非機能要件</h2>
 
           <div class="fill-block">
-            <div class="fill-label">セキュリティ要件 <span class="required">必須</span></div>
-            <div class="fill-hint">認証・認可・データ保護に関する要件</div>
-            <div class="fill-content">
-              <p>（セキュリティ要件を記載）</p>
-            </div>
+            <div class="fill-label">セキュリティ要件</div>
+            <p>1. 認証・認可<br>
+              - 管理機能（/admin.html, /api/admin/**）は管理者ロール（ROLE_ADMIN）でのみアクセス可能。<br>
+              - ログインはフォーム認証（/login）を使用し、失敗時はエラー画面へ遷移。<br>
+              - 公開API（予約・メール登録系）は匿名アクセスを許可。</p>
+            <p>**2. 認証情報管理<br>
+              - 管理者パスワードはハッシュ化（BCrypt）して照合する。<br>
+              - 管理者ID/パスワードは環境変数または設定ファイルで外部化し、デフォルト値運用を禁止する。<br>
+              - 本番環境での認証情報ローテーション手順を定義する。</p>
+            <p>3. 入力値検証<br>
+              - 予約・メール登録APIは Bean Validation により必須・形式・範囲を検証する。<br>
+              - 業務バリデーション（予約日範囲、時間帯、定員超過、コース値）をサーバー側で強制する。<br>
+              - 不正入力時は適切なHTTPステータス（400/409）を返却する。</p>
+            <p>4. 通信保護<br>
+              - 本番はHTTPS必須（TLS1.2+）。<br>
+              - セッションCookieは Secure / HttpOnly / SameSite を有効化する。</p>
+            <p>5. CSRF対策<br>
+              - 現状はCSRF無効化のため、要件としては以下のいずれかを必須化する。<br>
+              　1. CSRFトークンを有効化（推奨）<br>
+              　2. 同一オリジン制約と厳格なCORS、かつ状態変更APIに追加対策を実装</p>
+            <p>6. CORS制御<br>
+              - 現状 * 許可のため、本番では許可オリジンを明示的に限定する。<br>
+              - 許可メソッド・許可ヘッダーを最小化する。</p>
+            <p>7. 監査・ログ<br>
+              - ログイン成功/失敗、管理APIアクセス、予約登録、会員登録/解除を監査ログに記録する。<br>
+              - 個人情報（メール、電話番号等）はマスキング方針を設ける。</p>
+            <p>8. 可用性・不正利用対策<br>
+              - ログイン試行回数制限（ブルートフォース対策）を設ける。<br>
+              - 予約/登録APIにレート制限を導入する。<br>
+              - 例外時にスタックトレースや内部情報をクライアントへ返さない。</p>
+            <p>9. データ保護<br>
+              - 個人情報の保存期間・削除ルールを定義する。<br>
+              - バックアップとリストア手順を整備し、定期検証する。</p>
           </div>
           <div class="fill-block">
-            <div class="fill-label">対応環境 <span class="required">必須</span></div>
-            <div class="fill-hint">対応ブラウザ・デバイス</div>
-            <div class="fill-content">
-              <p>クライアント環境（利用者側）<br>
-                - 対応デバイス: PC / タブレット / スマートフォン（レスポンシブ）<br>
-                - ブレークポイント: 1280px（PC⇔SPナビ切替）、900px（モバイル最適化）<br>
-                - 対応ブラウザ: fetch / CSS Grid / matchMedia が使えるモダンブラウザ<br>
-                （Chrome / Edge / Safari / Firefox の最新安定版を推奨）<br>
-                - JavaScript: 有効必須（予約・管理画面のAPI連携で使用）</p>
-              <p>サーバー環境（アプリ実行）<br>
-                - 言語・ランタイム: Java 17<br>
-                - フレームワーク: Spring Boot 3.4.4<br>
-                - ビルド: Maven（mvnw/mvnw.cmd 同梱）<br>
-                - 実行形態: 組み込みサーバー（Spring Boot標準）</p>
-              <p>データベース環境<br>
-                - DB: H2 Database（ファイルDB）<br>
-                - 接続: jdbc:h2:file:./data/reservationdb<br>
-                - 補助機能: H2 Console（/h2-console）</p>
-              <p>開発環境（推奨）<br>
-                - OS: Windows / macOS / Linux（Java 17 が動作する環境）<br>
-                - 必須ツール: JDK 17、Maven（または Maven Wrapper）<br>
-                - 文字コード: UTF-8推奨</p>
-            </div>
+            <div class="fill-label">対応環境</div>
+            <p>クライアント環境（利用者側）<br>
+              - 対応デバイス: PC / タブレット / スマートフォン（レスポンシブ）<br>
+              - ブレークポイント: 1280px（PC⇔SPナビ切替）、900px（モバイル最適化）<br>
+              - 対応ブラウザ: fetch / CSS Grid / matchMedia が使えるモダンブラウザ<br>
+              （Chrome / Edge / Safari / Firefox の最新安定版を推奨）<br>
+              - JavaScript: 有効必須（予約・管理画面のAPI連携で使用）</p>
+            <p>サーバー環境（アプリ実行）<br>
+              - 言語・ランタイム: Java 17<br>
+              - フレームワーク: Spring Boot 3.4.4<br>
+              - ビルド: Maven（mvnw/mvnw.cmd 同梱）<br>
+              - 実行形態: 組み込みサーバー（Spring Boot標準）</p>
+            <p>データベース環境<br>
+              - DB: H2 Database（ファイルDB）<br>
+              - 接続: jdbc:h2:file:./data/reservationdb<br>
+              - 補助機能: H2 Console（/h2-console）</p>
+            <p>開発環境（推奨）<br>
+              - OS: Windows / macOS / Linux（Java 17 が動作する環境）<br>
+              - 必須ツール: JDK 17、Maven（または Maven Wrapper）<br>
+              - 文字コード: UTF-8推奨</p>
           </div>
 
         </section>

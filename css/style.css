@@ -316,6 +316,22 @@ a:hover { color: var(--black); }
   margin-bottom: 0;
 }
 
+/* Align server-side scope list with paragraph left edge */
+.app-scope-list {
+  margin: 0;
+  padding-left: 0;
+  list-style-position: inside;
+}
+
+.app-scope-list > li {
+  margin-bottom: 8px;
+}
+
+.app-scope-list > li > ul {
+  margin: 4px 0 0;
+  padding-left: 1.5em;
+}
+
 .ascii-diagram {
   overflow-x: auto;
 }

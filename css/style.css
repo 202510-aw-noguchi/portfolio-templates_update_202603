@@ -46,6 +46,7 @@ body {
 img { max-width: 100%; height: auto; }
 a { color: var(--gray-700); text-decoration: none; transition: color 0.2s; }
 a:hover { color: var(--black); }
+p + p { margin-top: 0.5em; }
 
 /* --- Layout --- */
 .page-wrapper {

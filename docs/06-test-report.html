@@ -1,19 +1,33 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>テスト報告書 -  プロジェクトアーカイブ</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <title>テスト報告書 - プロジェクトアーカイブ</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .tc-table {
+      table-layout: fixed;
+    }
+
+    .tc-table th,
+    .tc-table td {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+  </style>
 </head>
+
 <body>
   <button class="hamburger" aria-label="メニュー">
     <span></span><span></span><span></span>
   </button>
 
   <div class="page-wrapper">
-  <aside class="sidebar" data-nav-level="docs"></aside>
+    <aside class="sidebar" data-nav-level="docs"></aside>
 
     <main class="main-content">
       <header class="doc-header">
@@ -38,7 +52,8 @@
           </div>
           <div class="external-link-input">
             <input type="text" placeholder="https://docs.google.com/spreadsheets/d/xxxxx" id="external-link-09">
-            <a href="#" class="link-btn" onclick="window.open(document.getElementById('external-link-09').value || 'https://docs.google.com', '_blank'); return false;">
+            <a href="#" class="link-btn"
+              onclick="window.open(document.getElementById('external-link-09').value || 'https://docs.google.com', '_blank'); return false;">
               <span class="material-symbols-outlined">open_in_new</span>
               開く
             </a>
@@ -59,71 +74,348 @@
         <section class="section" id="sec1">
           <h2 class="section-title"><span class="section-icon">1</span> テスト計画</h2>
 
-        <div class="fill-block">
-          <div class="fill-label">テスト対象・範囲 <span class="required">必須</span></div>
-          <div class="fill-hint">テストの対象となる機能・画面と、テストの種類</div>
-          <div class="fill-content">
-            <p><strong>機能一覧（仕様機能の整理）</strong></p>
-            <p>1. コーポレートサイト表示<br><code>index / about / brands / press / magazine</code></p>
-            <p>2. ワークショップ案内表示<br><code>workshop.html</code>、<code>workshop/casual.html</code>、<code>workshop/holiday.html</code></p>
-            <p>3. ワークショップ予約<br><code>workshop/registration.html</code></p>
-            <p>- コース選択<br>- 予約可能日表示（空き状況API連携）<br>- 時間枠選択<br>- 参加人数・連絡先入力<br>- 予約確定（予約番号表示）</p>
-            <p>4. メールマガジン<br><code>mail.html</code></p>
-            <p>- 登録<br>- 配信停止</p>
-            <p>5. 管理者ログイン<br><code>/login.html</code>（Spring Security）</p>
-            <p>6. 管理画面（Backoffice）<br><code>/admin.html</code></p>
-            <p>- 予約一覧<br>- 予約サマリ（週次・月次）<br>- メルマガ一覧<br>- メルマガサマリ（登録/停止推移）<br>- ログアウト</p>
-            <p>7. API</p>
-            <p>- 予約: <code>GET /api/reservations/availability</code>, <code>POST /api/reservations</code><br>- メルマガ: <code>POST /api/mail/subscriptions/register</code>, <code>POST /api/mail/subscriptions/unsubscribe</code><br>- 管理: <code>GET /api/admin/*</code></p>
+          <div class="fill-block">
+            <div class="fill-label">テスト対象・範囲</div>
+            <div class="fill-hint">テストの対象となる機能・画面と、テストの種類</div>
+            <div class="fill-content">
+              <p><strong>機能一覧（仕様機能の整理）</strong></p>
+              <p>1. コーポレートサイト表示<br><code>index / about / brands / press / magazine</code></p>
+              <p>2.
+                ワークショップ案内表示<br><code>workshop.html</code>、<code>workshop/casual.html</code>、<code>workshop/holiday.html</code>
+              </p>
+              <p>3. ワークショップ予約<br><code>workshop/registration.html</code></p>
+              <p>- コース選択<br>- 予約可能日表示（空き状況API連携）<br>- 時間枠選択<br>- 参加人数・連絡先入力<br>- 予約確定（予約番号表示）</p>
+              <p>4. メールマガジン<br><code>mail.html</code></p>
+              <p>- 登録<br>- 配信停止</p>
+              <p>5. 管理者ログイン<br><code>/login.html</code>（Spring Security）</p>
+              <p>6. 管理画面（Backoffice）<br><code>/admin.html</code></p>
+              <p>- 予約一覧<br>- 予約サマリ（週次・月次）<br>- メルマガ一覧<br>- メルマガサマリ（登録/停止推移）<br>- ログアウト</p>
+              <p>7. API</p>
+              <p>- 予約: <code>GET /api/reservations/availability</code>, <code>POST /api/reservations</code><br>- メルマガ:
+                <code>POST /api/mail/subscriptions/register</code>,
+                <code>POST /api/mail/subscriptions/unsubscribe</code><br>- 管理: <code>GET /api/admin/*</code></p>
 
-            <p><strong>テスト対象の範囲</strong></p>
-            <p>- 対象（In Scope）</p>
-            <p>- フロント画面の表示・入力・遷移<br>- 予約/メルマガのAPI連携<br>- 管理者認証と管理画面のデータ表示<br>- 入力バリデーション（必須、形式、上限）</p>
-            <p>- 非対象（Out of Scope）</p>
-            <p>- 本番インフラ監視、外部メール配信基盤の実配信品質<br>- 大規模負荷試験（必要なら別計画で実施）</p>
+              <p><strong>テスト対象の範囲</strong></p>
+              <p>- 対象（In Scope）</p>
+              <p>- フロント画面の表示・入力・遷移<br>- 予約/メルマガのAPI連携<br>- 管理者認証と管理画面のデータ表示<br>- 入力バリデーション（必須、形式、上限）</p>
+              <p>- 非対象（Out of Scope）</p>
+              <p>- 本番インフラ監視、外部メール配信基盤の実配信品質<br>- 大規模負荷試験（必要なら別計画で実施）</p>
 
-            <p><strong>テスト種別</strong></p>
-            <p>1. 機能テスト</p>
-            <p>- 正常系: 予約作成、空き枠取得、メルマガ登録/停止、管理画面取得<br>- 異常系: 必須不足、不正メール形式、満席枠予約、未ログイン時の管理APIアクセス</p>
-            <p>2. 画面テスト</p>
-            <p>- 主要画面の表示崩れ、レスポンシブ、リンク遷移<br>- フォーム操作性（入力制限、エラー表示、モーダル表示）<br>- 管理画面タブ切替・再読み込み・ログアウト導線</p>
-            <p>3. セキュリティテスト</p>
-            <p>- 認証/認可: <code>/admin.html</code> と <code>/api/admin/*</code> のアクセス制御<br>- 入力値対策: XSS（表示エスケープ）、SQLインジェクション相当の不正入力<br>- CSRF/CORS/セッション周りの基本確認（ログアウト後アクセス不可など）</p>
+              <p><strong>テスト種別</strong></p>
+              <p>1. 機能テスト</p>
+              <p>- 正常系: 予約作成、空き枠取得、メルマガ登録/停止、管理画面取得<br>- 異常系: 必須不足、不正メール形式、満席枠予約、未ログイン時の管理APIアクセス</p>
+              <p>2. 画面テスト</p>
+              <p>- 主要画面の表示崩れ、レスポンシブ、リンク遷移<br>- フォーム操作性（入力制限、エラー表示、モーダル表示）<br>- 管理画面タブ切替・再読み込み・ログアウト導線</p>
+              <p>3. セキュリティテスト</p>
+              <p>- 認証/認可: <code>/admin.html</code> と <code>/api/admin/*</code> のアクセス制御<br>- 入力値対策:
+                XSS（表示エスケープ）、SQLインジェクション相当の不正入力<br>- CSRF/CORS/セッション周りの基本確認（ログアウト後アクセス不可など）</p>
 
-            <p><strong>テスト環境</strong></p>
-            <p>- OS</p>
-            <p>- Windows 11<br>- macOS 14以上</p>
-            <p>- ブラウザ</p>
-            <p>- Google Chrome 最新版<br>- Microsoft Edge 最新版<br>- Safari 最新版（macOS）<br>- 任意追加: Firefox 最新版（互換性確認）</p>
-            <p>- バックエンド</p>
-            <p>- Java 17<br>- Spring Boot（<code>reservation-app</code>）<br>- H2 Database</p>
+              <p><strong>テスト環境</strong></p>
+              <p>- OS</p>
+              <p>- Windows 11<br>- macOS 14以上</p>
+              <p>- ブラウザ</p>
+              <p>- Google Chrome 最新版<br>- Microsoft Edge 最新版<br>- Safari 最新版（macOS）<br>- 任意追加: Firefox 最新版（互換性確認）</p>
+              <p>- バックエンド</p>
+              <p>- Java 17<br>- Spring Boot（<code>reservation-app</code>）<br>- H2 Database</p>
 
-            <p><strong>テスト期間（例）</strong></p>
-            <p>- 2026年3月31日（火）〜 2026年4月2日（木）</p>
-            <p>3/31: テスト設計・観点レビュー<br>4/1: テスト実施<br>4/2: 再テスト、結果報告</p>
+              <p><strong>テスト期間（例）</strong></p>
+              <p>- 2026年3月31日（火）〜 2026年4月2日（木）</p>
+              <p>3/31: テスト設計・観点レビュー<br>4/1: テスト実施<br>4/2: 再テスト、結果報告</p>
+            </div>
           </div>
-        </div>
 
         </section>
 
         <section class="section" id="sec2">
           <h2 class="section-title"><span class="section-icon">2</span> テストケース一覧</h2>
 
-
           <div class="fill-block">
-            <div class="fill-label">テストケース一覧 <span class="required">必須</span></div>
-        <table class="doc-table">
-          <thead><tr><th>ID</th><th>対象機能</th><th>テスト種別</th><th>テスト内容</th><th>期待結果</th><th>結果</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td>TC-001</td><td>（ログイン）</td><td>正常系</td><td>（正しいメール/パスワードでログイン）</td><td>（ダッシュボードに遷移）</td><td>（OK/NG）</td></tr>
-          <tr class="template-row"><td>TC-002</td><td>（ログイン）</td><td>異常系</td><td>（パスワード未入力でログイン）</td><td>（エラーメッセージ表示）</td><td>（OK/NG）</td></tr>
-          <tr class="template-row"><td>TC-003</td><td>（ログイン）</td><td>異常系</td><td>（存在しないメールでログイン）</td><td>（エラーメッセージ表示）</td><td>（OK/NG）</td></tr>
-          <tr class="template-row"><td>TC-004</td><td>（新規登録）</td><td>正常系</td><td>（全項目入力して登録）</td><td>（一覧に追加、成功メッセージ）</td><td>（OK/NG）</td></tr>
-          <tr class="template-row"><td>TC-005</td><td>（新規登録）</td><td>異常系</td><td>（必須項目未入力で登録）</td><td>（バリデーションエラー表示）</td><td>（OK/NG）</td></tr>
-          <tr class="template-row"><td>TC-006</td><td>（新規登録）</td><td>境界値</td><td>（最大文字数で入力して登録）</td><td>（正常に登録される）</td><td>（OK/NG）</td></tr>
-          <tr class="template-row"><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
-          </tbody>
-        </table>
+            <div class="fill-label">テストケース一覧</div>
+            <table class="doc-table tc-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>対象機能</th>
+                  <th>分類</th>
+                  <th>テスト種別</th>
+                  <th>テスト内容</th>
+                  <th>期待結果</th>
+                  <th>結果</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>TP-001</td>
+                  <td>トップページ表示</td>
+                  <td>正常値</td>
+                  <td>画面テスト</td>
+                  <td><code>index.html</code> を表示</td>
+                  <td>レイアウト崩れなく表示される</td>
+                  <td>合格（静的確認）</td>
+                </tr>
+                <tr>
+                  <td>TP-002</td>
+                  <td>Aboutページ表示</td>
+                  <td>正常値</td>
+                  <td>画面テスト</td>
+                  <td><code>about.html</code> を表示</td>
+                  <td>レイアウト崩れなく表示される</td>
+                  <td>合格（静的確認）</td>
+                </tr>
+                <tr>
+                  <td>TP-003</td>
+                  <td>Brandsページ表示</td>
+                  <td>正常値</td>
+                  <td>画面テスト</td>
+                  <td><code>brands.html</code> を表示</td>
+                  <td>レイアウト崩れなく表示される</td>
+                  <td>合格（静的確認）</td>
+                </tr>
+                <tr>
+                  <td>TP-004</td>
+                  <td>Pressページ表示</td>
+                  <td>正常値</td>
+                  <td>画面テスト</td>
+                  <td><code>press.html</code> を表示</td>
+                  <td>レイアウト崩れなく表示される</td>
+                  <td>合格（静的確認）</td>
+                </tr>
+                <tr>
+                  <td>TP-005</td>
+                  <td>Magazineページ表示</td>
+                  <td>正常値</td>
+                  <td>画面テスト</td>
+                  <td><code>magazine.html</code> を表示</td>
+                  <td>レイアウト崩れなく表示される</td>
+                  <td>合格（静的確認）</td>
+                </tr>
+                <tr>
+                  <td>TP-006</td>
+                  <td>Workshopページ表示</td>
+                  <td>正常値</td>
+                  <td>画面テスト</td>
+                  <td><code>workshop.html</code> を表示</td>
+                  <td>主要セクション・スライダーが表示される</td>
+                  <td>合格（静的確認）</td>
+                </tr>
+                <tr>
+                  <td>TP-007</td>
+                  <td>ワークショップ予約（日付取得）</td>
+                  <td>正常値</td>
+                  <td>機能テスト</td>
+                  <td>コース選択後に空き状況APIを呼び出す</td>
+                  <td>予約可能日がカレンダーに反映される</td>
+                  <td>合格（実行確認）</td>
+                </tr>
+                <tr>
+                  <td>TP-008</td>
+                  <td>ワークショップ予約（正常）</td>
+                  <td>正常値</td>
+                  <td>機能テスト</td>
+                  <td>必須項目を入力して予約確定</td>
+                  <td>予約番号が返却され画面表示される</td>
+                  <td>合格（API実行確認）</td>
+                </tr>
+                <tr>
+                  <td>TP-009</td>
+                  <td>ワークショップ予約（必須エラー）</td>
+                  <td>異常値</td>
+                  <td>機能テスト</td>
+                  <td>日付未選択で送信</td>
+                  <td>送信されずエラー表示される</td>
+                  <td>合格</td>
+                </tr>
+                <tr>
+                  <td>TP-010</td>
+                  <td>ワークショップ予約（人数上限）</td>
+                  <td>境界値</td>
+                  <td>機能テスト</td>
+                  <td>人数に上限超過値を入力</td>
+                  <td>入力制御またはエラーになる</td>
+                  <td>合格</td>
+                </tr>
+                <tr>
+                  <td>TP-011</td>
+                  <td>ワークショップ予約（電話入力制御）</td>
+                  <td>異常値</td>
+                  <td>機能テスト</td>
+                  <td>電話番号に英字/記号を入力</td>
+                  <td>不正文字が制限される</td>
+                  <td>合格</td>
+                </tr>
+                <tr>
+                  <td>TP-012</td>
+                  <td>メルマガ登録（正常）</td>
+                  <td>正常値</td>
+                  <td>機能テスト</td>
+                  <td>正しいメールで登録送信</td>
+                  <td>登録成功メッセージが表示される</td>
+                  <td>合格（API実行確認）</td>
+                </tr>
+                <tr>
+                  <td>TP-013</td>
+                  <td>メルマガ登録（形式エラー）</td>
+                  <td>異常値</td>
+                  <td>機能テスト</td>
+                  <td>不正なメール形式で登録送信</td>
+                  <td>バリデーションで登録不可</td>
+                  <td>合格</td>
+                </tr>
+                <tr>
+                  <td>TP-014</td>
+                  <td>メルマガ配信停止（正常）</td>
+                  <td>正常値</td>
+                  <td>機能テスト</td>
+                  <td>登録済みメールで配信停止送信</td>
+                  <td>停止成功メッセージが表示される</td>
+                  <td>合格（API実行確認）</td>
+                </tr>
+                <tr>
+                  <td>TP-015</td>
+                  <td>API: 空き状況取得</td>
+                  <td>正常値</td>
+                  <td>機能テスト</td>
+                  <td><code>GET /api/reservations/availability</code> 正常パラメータ</td>
+                  <td>200で空き状況JSONが返る</td>
+                  <td>合格</td>
+                </tr>
+                <tr>
+                  <td>TP-016</td>
+                  <td>API: 予約作成</td>
+                  <td>正常値</td>
+                  <td>機能テスト</td>
+                  <td><code>POST /api/reservations</code> 正常データ</td>
+                  <td>200で<code>reservationNumber</code>が返る</td>
+                  <td>合格</td>
+                </tr>
+                <tr>
+                  <td>TP-017</td>
+                  <td>API: メルマガ登録</td>
+                  <td>正常値</td>
+                  <td>機能テスト</td>
+                  <td><code>POST /api/mail/subscriptions/register</code> 正常データ</td>
+                  <td>200で登録結果が返る</td>
+                  <td>合格</td>
+                </tr>
+                <tr>
+                  <td>TP-018</td>
+                  <td>API: メルマガ停止</td>
+                  <td>正常値</td>
+                  <td>機能テスト</td>
+                  <td><code>POST /api/mail/subscriptions/unsubscribe</code> 正常データ</td>
+                  <td>200で停止結果が返る</td>
+                  <td>合格</td>
+                </tr>
+                <tr>
+                  <td>TP-019</td>
+                  <td>管理ログイン（正常）</td>
+                  <td>正常値</td>
+                  <td>機能テスト</td>
+                  <td>正しいID/パスワードでログイン</td>
+                  <td>管理画面へ遷移できる</td>
+                  <td>合格</td>
+                </tr>
+                <tr>
+                  <td>TP-020</td>
+                  <td>管理ログイン（異常）</td>
+                  <td>異常値</td>
+                  <td>機能テスト</td>
+                  <td>誤ったID/パスワードでログイン</td>
+                  <td>ログイン失敗メッセージが表示される</td>
+                  <td>合格</td>
+                </tr>
+                <tr>
+                  <td>TP-021</td>
+                  <td>管理画面 予約一覧</td>
+                  <td>正常値</td>
+                  <td>画面テスト</td>
+                  <td>予約タブを表示</td>
+                  <td>予約一覧テーブルが表示される</td>
+                  <td>合格（API+表示ロジック確認）</td>
+                </tr>
+                <tr>
+                  <td>TP-022</td>
+                  <td>管理画面 メルマガ一覧</td>
+                  <td>正常値</td>
+                  <td>画面テスト</td>
+                  <td>メルマガタブを表示</td>
+                  <td>メルマガ一覧と件数が表示される</td>
+                  <td>合格（API+表示ロジック確認）</td>
+                </tr>
+                <tr>
+                  <td>TP-023</td>
+                  <td>管理画面 再読み込み</td>
+                  <td>正常値</td>
+                  <td>機能テスト</td>
+                  <td>再読み込みボタン押下</td>
+                  <td>最新データを再取得して表示更新</td>
+                  <td>合格（実装+API再取得確認）</td>
+                </tr>
+                <tr>
+                  <td>TP-024</td>
+                  <td>管理画面 ログアウト</td>
+                  <td>正常値</td>
+                  <td>機能テスト</td>
+                  <td>ログアウトボタン押下</td>
+                  <td>ログイン画面へ遷移し再アクセス不可</td>
+                  <td>合格</td>
+                </tr>
+                <tr>
+                  <td>TP-025</td>
+                  <td>認可制御（未ログイン）</td>
+                  <td>異常値</td>
+                  <td>セキュリティテスト</td>
+                  <td>未ログインで<code>/api/admin/reservations</code>へアクセス</td>
+                  <td>401/403またはログインへ誘導</td>
+                  <td>合格</td>
+                </tr>
+                <tr>
+                  <td>TP-026</td>
+                  <td>認可制御（管理画面）</td>
+                  <td>異常値</td>
+                  <td>セキュリティテスト</td>
+                  <td>未ログインで<code>/admin.html</code>へアクセス</td>
+                  <td>ログイン要求される</td>
+                  <td>合格</td>
+                </tr>
+                <tr>
+                  <td>TP-027</td>
+                  <td>XSS対策（表示項目）</td>
+                  <td>異常値</td>
+                  <td>セキュリティテスト</td>
+                  <td>スクリプト文字列を入力・表示確認</td>
+                  <td>スクリプト実行されず無害化表示される</td>
+                  <td>合格（実装＋データ確認）</td>
+                </tr>
+                <tr>
+                  <td>TP-028</td>
+                  <td>SQLインジェクション耐性</td>
+                  <td>異常値</td>
+                  <td>セキュリティテスト</td>
+                  <td>API入力にSQL風文字列を送信</td>
+                  <td>異常終了せず不正処理されない</td>
+                  <td>合格</td>
+                </tr>
+                <tr>
+                  <td>TP-029</td>
+                  <td>CSRF基本確認</td>
+                  <td>異常値</td>
+                  <td>セキュリティテスト</td>
+                  <td>認証系POST（ログアウト等）を確認</td>
+                  <td>想定外の外部送信で成立しない</td>
+                  <td>合格</td>
+                </tr>
+                <tr>
+                  <td>TP-030</td>
+                  <td>クロスブラウザ表示</td>
+                  <td>正常値</td>
+                  <td>画面テスト</td>
+                  <td>Chrome/Edgeで主要画面確認</td>
+                  <td>主要UI・操作が同等に動作する</td>
+                  <td>合格</td>
+                </tr>
+              </tbody>
+            </table>
 
           </div>
         </section>
@@ -132,18 +424,38 @@
           <h2 class="section-title"><span class="section-icon">3</span> テスト結果サマリー</h2>
 
           <div class="fill-block">
-            <div class="fill-label">テスト結果サマリー <span class="required">必須</span></div>
+            <div class="fill-label">テスト結果サマリー</div>
             <div class="fill-hint">テスト実施後に集計結果を記入してください</div>
-        <table class="doc-table">
-          <thead><tr><th>項目</th><th>件数</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td>総テストケース数</td><td>（数値を入力）</td></tr>
-          <tr class="template-row"><td>OK</td><td>（数値を入力）</td></tr>
-          <tr class="template-row"><td>NG</td><td>（数値を入力）</td></tr>
-          <tr class="template-row"><td>未実施</td><td>（数値を入力）</td></tr>
-          <tr class="template-row"><td>合格率</td><td>（％を入力）</td></tr>
-          </tbody>
-        </table>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>項目</th>
+                  <th>件数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>総テストケース数</td>
+                  <td>30</td>
+                </tr>
+                <tr>
+                  <td>合格</td>
+                  <td>30</td>
+                </tr>
+                <tr>
+                  <td>不合格</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>未実施</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>合格率</td>
+                  <td>100%</td>
+                </tr>
+              </tbody>
+            </table>
 
           </div>
         </section>
@@ -152,14 +464,46 @@
           <h2 class="section-title"><span class="section-icon">4</span> バグ一覧</h2>
 
           <div class="fill-block">
-            <div class="fill-label">発見されたバグと対応状況 <span class="required">必須</span></div>
-        <table class="doc-table">
-          <thead><tr><th>バグID</th><th>発見日</th><th>対象機能</th><th>内容</th><th>重大度</th><th>対応状況</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td>BUG-001</td><td>（日付）</td><td>（機能名）</td><td>（バグの内容）</td><td>（高/中/低）</td><td>（修正済/対応中/保留）</td></tr>
-          <tr class="template-row"><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
-          </tbody>
-        </table>
+            <div class="fill-label">発見されたバグと対応状況</div>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>バグID</th>
+                  <th>発見日</th>
+                  <th>対象機能</th>
+                  <th>内容</th>
+                  <th>重大度</th>
+                  <th>対応状況</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>BUG-001</td>
+                  <td>2026-03-26</td>
+                  <td>CSRF基本確認（TP-029）</td>
+                  <td><code>/logout</code> がCSRFトークンなしでも成立していた（CSRF防御不足）</td>
+                  <td>高</td>
+                  <td><strong>対応済み</strong>（CSRF有効化、<code>/api/csrf-token</code>追加、管理画面ログアウトをトークン送信対応。再テスト合格）</td>
+                </tr>
+                <tr>
+                  <td>BUG-002</td>
+                  <td>2026-03-26</td>
+                  <td>クロスブラウザ表示（TP-030）</td>
+                  <td><code>workshop/registration.html</code> でローカル静的配信時に <code>/api</code> 参照先が不適切で予約API取得失敗</td>
+                  <td>中</td>
+                  <td><strong>対応済み</strong>（<code>API_BASE</code>判定修正。再テスト合格）</td>
+                </tr>
+                <tr>
+                  <td>BUG-003</td>
+                  <td>2026-03-26</td>
+                  <td>クロスブラウザ表示（TP-030）</td>
+                  <td><code>reservation-modal-image</code> の初期 <code>src=\"\"</code> により broken image 判定</td>
+                  <td>低</td>
+                  <td><strong>対応済み</strong>（初期 <code>src</code> を有効画像に変更。再テスト合格）</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>現時点で未対応バグはありません。</p>
 
           </div>
         </section>
@@ -168,17 +512,69 @@
           <h2 class="section-title"><span class="section-icon">5</span> ブラウザ・デバイス対応</h2>
 
           <div class="fill-block">
-            <div class="fill-label">対応状況 <span class="required">必須</span></div>
-        <table class="doc-table">
-          <thead><tr><th>ブラウザ/デバイス</th><th>バージョン</th><th>表示</th><th>機能</th><th>備考</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td>Chrome（PC）</td><td>（バージョン）</td><td>（○/△/×）</td><td>（○/△/×）</td><td>（備考）</td></tr>
-          <tr class="template-row"><td>Firefox（PC）</td><td>（バージョン）</td><td>（○/△/×）</td><td>（○/△/×）</td><td>（備考）</td></tr>
-          <tr class="template-row"><td>Edge（PC）</td><td>（バージョン）</td><td>（○/△/×）</td><td>（○/△/×）</td><td>（備考）</td></tr>
-          <tr class="template-row"><td>Chrome（スマートフォン）</td><td>（バージョン）</td><td>（○/△/×）</td><td>（○/△/×）</td><td>（備考）</td></tr>
-          <tr class="template-row"><td>Safari（iPhone）</td><td>（バージョン）</td><td>（○/△/×）</td><td>（○/△/×）</td><td>（備考）</td></tr>
-          </tbody>
-        </table>
+            <div class="fill-label">対応状況</div>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>ブラウザ/デバイス</th>
+                  <th>バージョン</th>
+                  <th>表示</th>
+                  <th>機能</th>
+                  <th>備考</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Google Chrome（Windows）</td>
+                  <td>インストール済み最新版（Playwright <code>channel=chrome</code>）</td>
+                  <td>OK</td>
+                  <td>OK</td>
+                  <td>TP-030で主要8ページ確認。<code>workshop/registration.html</code> のAPI参照不具合修正後に再検証OK</td>
+                </tr>
+                <tr>
+                  <td>Microsoft Edge（Windows）</td>
+                  <td>インストール済み最新版（Playwright <code>channel=msedge</code>）</td>
+                  <td>OK</td>
+                  <td>OK</td>
+                  <td>TP-030で主要8ページ確認。Chrome同様、修正後に再検証OK</td>
+                </tr>
+                <tr>
+                  <td>Safari（macOS）</td>
+                  <td>未実施</td>
+                  <td>未確認</td>
+                  <td>未確認</td>
+                  <td>Windows環境のため実機未検証</td>
+                </tr>
+                <tr>
+                  <td>Firefox</td>
+                  <td>未実施</td>
+                  <td>未確認</td>
+                  <td>未確認</td>
+                  <td>今回の対象外（実行環境・計画上未実施）</td>
+                </tr>
+                <tr>
+                  <td>iOS/Android 実機</td>
+                  <td>未実施</td>
+                  <td>未確認</td>
+                  <td>未確認</td>
+                  <td>モバイル実機テストは未実施（PCブラウザ検証のみ）</td>
+                </tr>
+                <tr>
+                  <td>Windows（OS）</td>
+                  <td>Windows（本検証端末）</td>
+                  <td>OK</td>
+                  <td>OK</td>
+                  <td>画面テスト・機能テスト・セキュリティテストを実施</td>
+                </tr>
+                <tr>
+                  <td>macOS（OS）</td>
+                  <td>未実施</td>
+                  <td>未確認</td>
+                  <td>未確認</td>
+                  <td>OS実機での検証は未実施</td>
+                </tr>
+              </tbody>
+            </table>
 
           </div>
         </section>
@@ -189,4 +585,5 @@
 
   <script src="../js/main.js"></script>
 </body>
+
 </html>

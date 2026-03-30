@@ -20,7 +20,7 @@
 
     <main class="main-content">
       <header class="doc-header">
-        <div class="doc-category">DESIGN DOCUMENT</div>
+        <div class="doc-category">DOCUMENT 08</div>
         <h1 class="doc-title">システムフロー図</h1>
         <div class="doc-meta">
           <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-XX-XX</span>
@@ -97,12 +97,12 @@
 │                                                                                    │
 └────────────────────────────────────────────────────────────────────────────────────┘
                 </pre>
-              <p>データの流れ<br>
-                Browser -> Controller(API) -> Service -> Repository -> DB<br>
+              <div class="fill-label">データの流れ</div>
+              <p>Browser -> Controller(API) -> Service -> Repository -> DB<br>
                 Browser <- JSON Response <- Controller <- Service <- Repository <- DB</p>
 
-                  <p>画面遷移の流れ<br>
-                    Browser -> /login.html, /admin.html (static)<br>
+                  <div class="fill-label">画面遷移の流れ</div>
+                  <p>Browser -> /login.html, /admin.html (static)<br>
                     admin.html -> /api/admin/* を fetch<br>
                     registration.html -> /api/reservations/* を fetch<br>
                     mail.html -> /api/mail/subscriptions/* を fetch</p>
@@ -111,60 +111,57 @@
 
           <div class="fill-block">
             <div class="fill-label">レイヤー構成の説明</div>
-            <div class="fill-hint">各レイヤーの役割を表形式で説明</div>
-            <div class="fill-content">
-              <table class="doc-table">
-                <thead>
-                  <tr>
-                    <th>レイヤー</th>
-                    <th>役割</th>
-                    <th>主なクラス</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="template-row">
-                    <td>クライアント（ブラウザ）</td>
-                    <td>画面表示、ユーザー入力、API呼び出し（<code>fetch</code>）を担当</td>
-                    <td><code>workshop/registration.html</code>, <code>mail.html</code>,
-                      <code>reservation-app/src/main/resources/static/admin.html</code>,
-                      <code>reservation-app/src/main/resources/static/login.html</code>
-                    </td>
-                  </tr>
-                  <tr class="template-row">
-                    <td>Controller層</td>
-                    <td>HTTPリクエスト受付、入力受け取り、Service呼び出し、レスポンス返却</td>
-                    <td><code>ReservationController</code>, <code>MailSubscriptionController</code>,
-                      <code>AdminController</code>, <code>CsrfTokenController</code>,
-                      <code>RootRedirectController</code>
-                    </td>
-                  </tr>
-                  <tr class="template-row">
-                    <td>Service層</td>
-                    <td>業務ロジック（予約可否判定、集計、メルマガ登録/解除など）を実装</td>
-                    <td><code>ReservationService</code>, <code>MailSubscriptionService</code></td>
-                  </tr>
-                  <tr class="template-row">
-                    <td>Repository層</td>
-                    <td>DBアクセスを抽象化し、エンティティの永続化・検索を担当</td>
-                    <td><code>ReservationRepository</code>, <code>MailSubscriptionRepository</code>,
-                      <code>SlotCapacityRepository</code>
-                    </td>
-                  </tr>
-                  <tr class="template-row">
-                    <td>データベース層</td>
-                    <td>永続データの保存・参照</td>
-                    <td>H2（<code>reservationdb</code>）、エンティティ: <code>Reservation</code>, <code>MailSubscription</code>,
-                      <code>SlotCapacity</code>
-                    </td>
-                  </tr>
-                  <tr class="template-row">
-                    <td>View層（Thymeleaf）</td>
-                    <td>サーバーサイドHTMLテンプレート生成</td>
-                    <td>なし（本アプリはThymeleaf未使用、静的HTML配信）</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>レイヤー</th>
+                  <th>役割</th>
+                  <th>主なクラス</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="template-row">
+                  <td>クライアント（ブラウザ）</td>
+                  <td>画面表示、ユーザー入力、API呼び出し（<code>fetch</code>）を担当</td>
+                  <td><code>workshop/registration.html</code>, <code>mail.html</code>,
+                    <code>reservation-app/src/main/resources/static/admin.html</code>,
+                    <code>reservation-app/src/main/resources/static/login.html</code>
+                  </td>
+                </tr>
+                <tr class="template-row">
+                  <td>Controller層</td>
+                  <td>HTTPリクエスト受付、入力受け取り、Service呼び出し、レスポンス返却</td>
+                  <td><code>ReservationController</code>, <code>MailSubscriptionController</code>,
+                    <code>AdminController</code>, <code>CsrfTokenController</code>,
+                    <code>RootRedirectController</code>
+                  </td>
+                </tr>
+                <tr class="template-row">
+                  <td>Service層</td>
+                  <td>業務ロジック（予約可否判定、集計、メルマガ登録/解除など）を実装</td>
+                  <td><code>ReservationService</code>, <code>MailSubscriptionService</code></td>
+                </tr>
+                <tr class="template-row">
+                  <td>Repository層</td>
+                  <td>DBアクセスを抽象化し、エンティティの永続化・検索を担当</td>
+                  <td><code>ReservationRepository</code>, <code>MailSubscriptionRepository</code>,
+                    <code>SlotCapacityRepository</code>
+                  </td>
+                </tr>
+                <tr class="template-row">
+                  <td>データベース層</td>
+                  <td>永続データの保存・参照</td>
+                  <td>H2（<code>reservationdb</code>）、エンティティ: <code>Reservation</code>, <code>MailSubscription</code>,
+                    <code>SlotCapacity</code>
+                  </td>
+                </tr>
+                <tr class="template-row">
+                  <td>View層（Thymeleaf）</td>
+                  <td>サーバーサイドHTMLテンプレート生成</td>
+                  <td>なし（本アプリはThymeleaf未使用、静的HTML配信）</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
 
@@ -273,7 +270,7 @@
         <section class="section" id="sec3">
           <h2 class="section-title"><span class="section-icon">3</span> 画面遷移フロー</h2>
           <div class="fill-block">
-            <div class="fill-label">画面遷移図（管理画面系）</div>
+            <div class="fill-label">管理画面系</div>
             <div class="ascii-diagram">
               <pre>
 /admin.html (未ログイン)
@@ -300,7 +297,7 @@
   [予約確認タブ] <-----------------> [メルマガタブ]
                  (どちらも /admin.html)</pre>
               <br>
-              <div class="fill-label">画面遷移図（予約・メルマガ連携画面：静的サイト側）</div>
+              <div class="fill-label">予約・メルマガ連携画面：静的サイト側</div>
               <div class="ascii-diagram">
                 <pre>
 /workshop/holiday.html
@@ -503,7 +500,6 @@
         <section class="section" id="sec5">
           <h2 class="section-title"><span class="section-icon">5</span> 認証・認可フロー</h2>
           <div class="fill-block">
-            <div class="fill-label">Spring Security の認証フロー</div>
             <div class="ascii-diagram">
               <pre>
 [Browser]
@@ -553,8 +549,6 @@
       |                              |
       v                              v
 302 Redirect /admin.html             302 Redirect /login.html?error
-
-
                 </pre>
             </div>
           </div>

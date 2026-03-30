@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>クラス構成図 - プロジェクトアーカイブ</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .doc-table td,
+    .doc-table th {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .doc-table code {
+      white-space: normal;
+      word-break: break-all;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="page-wrapper">
+    <aside class="sidebar" data-nav-level="design"></aside>
+
+    <main class="main-content">
+      <header class="doc-header">
+        <div class="doc-category">DESIGN DOCUMENT</div>
+        <h1 class="doc-title">クラス構成図</h1>
+        <div class="doc-meta">
+          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-XX-XX</span>
+          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
+        </div>
+      </header>
+
+      <div class="doc-body">
+
+        <div class="toc">
+          <div class="toc-title">目次</div>
+          <ol class="toc-list">
+            <li><a href="#sec1">パッケージ構成</a></li>
+            <li><a href="#sec2">Entity（エンティティ）</a></li>
+            <li><a href="#sec3">Repository（リポジトリ）</a></li>
+            <li><a href="#sec4">Service（サービス）</a></li>
+            <li><a href="#sec5">Controller（コントローラー）</a></li>
+            <li><a href="#sec6">クラス間の依存関係</a></li>
+          </ol>
+        </div>
+
+        <section class="section" id="sec1">
+          <h2 class="section-title"><span class="section-icon">1</span> パッケージ構成</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">ディレクトリ構造</div>
+            <div class="ascii-diagram">
+              <pre>
+src/main/java/
+└─ com/example/reservation/
+   ├─ api/
+   │  └─ dto/
+   ├─ config/
+   ├─ model/
+   ├─ repository/
+   └─ service/
+                  </pre>
+            </div>
+          </div>
+
+          <div class="fill-block">
+            <div class="fill-label">パッケージの役割</div>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>パッケージ</th>
+                  <th>役割</th>
+                  <th>使用するアノテーション</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="template-row">
+                  <td><code>src/main/java</code></td>
+                  <td>Javaソース全体のルート</td>
+                  <td>なし</td>
+                </tr>
+                <tr class="template-row">
+                  <td><code>com.example.reservation</code></td>
+                  <td>アプリ起動・全体の基点</td>
+                  <td><code>@SpringBootApplication</code></td>
+                </tr>
+                <tr class="template-row">
+                  <td><code>com.example.reservation.api</code></td>
+                  <td>REST APIのエンドポイント公開</td>
+                  <td><code>@RestController</code>, <code>@RequestMapping</code>, <code>@GetMapping</code>,
+                    <code>@PostMapping</code>, <code>@RequestParam</code>, <code>@RequestBody</code>,
+                    <code>@Valid</code>, <code>@DateTimeFormat</code>
+                  </td>
+                </tr>
+                <tr class="template-row">
+                  <td><code>com.example.reservation.api.dto</code></td>
+                  <td>API入出力DTO（リクエスト/レスポンス）定義</td>
+                  <td><code>@NotBlank</code>, <code>@NotNull</code>, <code>@Min</code>, <code>@Max</code>,
+                    <code>@Pattern</code>, <code>@Email</code>
+                  </td>
+                </tr>
+                <tr class="template-row">
+                  <td><code>com.example.reservation.config</code></td>
+                  <td>Web/Security/Beanなどの設定</td>
+                  <td><code>@Configuration</code>, <code>@Bean</code>, <code>@Controller</code>,
+                    <code>@GetMapping</code>, <code>@Value</code>, <code>@Override</code>
+                  </td>
+                </tr>
+                <tr class="template-row">
+                  <td><code>com.example.reservation.model</code></td>
+                  <td>JPAエンティティ（予約・枠・購読）定義</td>
+                  <td><code>@Entity</code>, <code>@Table</code>, <code>@Id</code>, <code>@GeneratedValue</code>,
+                    <code>@Column</code>, <code>@PrePersist</code>, <code>@PreUpdate</code>
+                  </td>
+                </tr>
+                <tr class="template-row">
+                  <td><code>com.example.reservation.repository</code></td>
+                  <td>DBアクセス（Spring Data JPA）</td>
+                  <td><code>@Query</code>, <code>@Param</code></td>
+                </tr>
+                <tr class="template-row">
+                  <td><code>com.example.reservation.service</code></td>
+                  <td>業務ロジック・トランザクション制御</td>
+                  <td><code>@Service</code>, <code>@Transactional</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="section" id="sec2">
+          <h2 class="section-title"><span class="section-icon">2</span> Entity（エンティティ）</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">reservation-app</div>
+            <div class="ascii-diagram">
+              <pre>
++--------------------------------------------------+
+|                 <<Entity>> Reservation           |
+|--------------------------------------------------|
+| - id: Long                                       |
+| - reservationNumber: String                      |
+| - course: String                                 |
+| - reserveDate: LocalDate                         |
+| - reserveTime: String                            |
+| - participantCount: int                          |
+| - contactName: String                            |
+| - contactPhone: String                           |
+| - contactEmail: String                           |
+| - createdAt: LocalDateTime                       |
+|--------------------------------------------------|
+| + onCreate(): void                               |
+| + getId(): Long                                  |
+| + getReservationNumber(): String                 |
+| + setReservationNumber(String): void             |
+| + getCourse(): String                            |
+| + setCourse(String): void                        |
+| + getReserveDate(): LocalDate                    |
+| + setReserveDate(LocalDate): void                |
+| + getReserveTime(): String                       |
+| + setReserveTime(String): void                   |
+| + getParticipantCount(): int                     |
+| + setParticipantCount(int): void                 |
+| + getContactName(): String                       |
+| + setContactName(String): void                   |
+| + getContactPhone(): String                      |
+| + setContactPhone(String): void                  |
+| + getContactEmail(): String                      |
+| + setContactEmail(String): void                  |
+| + getCreatedAt(): LocalDateTime                  |
++--------------------------------------------------+
+
++----------------------------------------------+
+|            <<Entity>> SlotCapacity           |
+|----------------------------------------------|
+| - id: Long                                   |
+| - reserveDate: LocalDate                     |
+| - reserveTime: String                        |
+| - capacity: int                              |
+|----------------------------------------------|
+| + getReserveDate(): LocalDate                |
+| + getReserveTime(): String                   |
+| + getCapacity(): int                         |
++----------------------------------------------+
+
++--------------------------------------------------+
+|              <<Entity>> MailSubscription         |
+|--------------------------------------------------|
+| - id: Long                                       |
+| - email: String                                  |
+| - active: boolean                                |
+| - createdAt: LocalDateTime                       |
+| - updatedAt: LocalDateTime                       |
+| - unsubscribedAt: LocalDateTime                  |
+|--------------------------------------------------|
+| + onCreate(): void                               |
+| + onUpdate(): void                               |
+| + getId(): Long                                  |
+| + getEmail(): String                             |
+| + setEmail(String): void                         |
+| + isActive(): boolean                            |
+| + setActive(boolean): void                       |
+| + getCreatedAt(): LocalDateTime                  |
+| + getUpdatedAt(): LocalDateTime                  |
+| + getUnsubscribedAt(): LocalDateTime             |
+| + setUnsubscribedAt(LocalDateTime): void         |
++--------------------------------------------------+
+
+  Reservation ............................... SlotCapacity
+   (service層で reserveDate + reserveTime をキーに在庫計算)
+   ※ JPAの @OneToMany / @ManyToOne などの直接関連は未定義
+                </pre>
+            </div>
+          </div>
+
+          <section class="section" id="sec3">
+            <h2 class="section-title"><span class="section-icon">3</span> Repository（リポジトリ）</h2>
+
+            <div class="fill-block">
+              <div class="fill-label">reservation-app</div>
+              <div class="ascii-diagram">
+                <pre>
++-------------------------------------------------------------+
+| <<interface>> ReservationRepository                         |
+| extends JpaRepository<Reservation, Long>                    |
+|-------------------------------------------------------------|
+| + sumParticipants(course, reserveDate, reserveTime): int    |
+| + findTop200ByOrderByCreatedAtDesc(): List<Reservation>     |
+| + findByReserveDateBetween(from, to): List<Reservation>     |
+| + findByCreatedAtBetween(from, to): List<Reservation>       |
++-------------------------------------------------------------+
+
++-----------------------------------------------------------------------+
+| <<interface>> SlotCapacityRepository                                  |
+| extends JpaRepository<SlotCapacity, Long>                             |
+|-----------------------------------------------------------------------|
+| + findByReserveDateAndReserveTime(reserveDate, reserveTime)           |
+|   : Optional<SlotCapacity>                                            |
++-----------------------------------------------------------------------+
+
++--------------------------------------------------------------------+
+| <<interface>> MailSubscriptionRepository                           |
+| extends JpaRepository<MailSubscription, Long>                      |
+|--------------------------------------------------------------------|
+| + findByEmail(email): Optional<MailSubscription>                   |
+| + findTop200ByOrderByUpdatedAtDesc(): List<MailSubscription>       |
+| + findByCreatedAtBetween(from, to): List<MailSubscription>         |
+| + findByUnsubscribedAtBetween(from, to): List<MailSubscription>    |
++--------------------------------------------------------------------+
+
+                </pre>
+              </div>
+              <div style="margin-top: 16px;">
+                <table class="doc-table">
+                  <thead>
+                    <tr>
+                      <th>メソッド</th>
+                      <th>引数</th>
+                      <th>戻り値</th>
+                      <th>SQL種別</th>
+                      <th>説明</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="template-row">
+                      <td><code>ReservationRepository.sumParticipants</code></td>
+                      <td><code>course:String, reserveDate:LocalDate, reserveTime:String</code></td>
+                      <td><code>int</code></td>
+                      <td><code>SELECT</code></td>
+                      <td>条件一致する予約の <code>participantCount</code> 合計を取得（<code>@Query</code>）。</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>ReservationRepository.findTop200ByOrderByCreatedAtDesc</code></td>
+                      <td>なし</td>
+                      <td><code>List&lt;Reservation&gt;</code></td>
+                      <td><code>SELECT</code></td>
+                      <td>予約を作成日時降順で最大200件取得。</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>ReservationRepository.findByReserveDateBetween</code></td>
+                      <td><code>from:LocalDate, to:LocalDate</code></td>
+                      <td><code>List&lt;Reservation&gt;</code></td>
+                      <td><code>SELECT</code></td>
+                      <td>予約日が範囲内のレコードを取得。</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>ReservationRepository.findByCreatedAtBetween</code></td>
+                      <td><code>from:LocalDateTime, to:LocalDateTime</code></td>
+                      <td><code>List&lt;Reservation&gt;</code></td>
+                      <td><code>SELECT</code></td>
+                      <td>作成日時が範囲内のレコードを取得。</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>SlotCapacityRepository.findByReserveDateAndReserveTime</code></td>
+                      <td><code>reserveDate:LocalDate, reserveTime:String</code></td>
+                      <td><code>Optional&lt;SlotCapacity&gt;</code></td>
+                      <td><code>SELECT</code></td>
+                      <td>指定日付・時間枠の定員設定を1件取得。</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>MailSubscriptionRepository.findByEmail</code></td>
+                      <td><code>email:String</code></td>
+                      <td><code>Optional&lt;MailSubscription&gt;</code></td>
+                      <td><code>SELECT</code></td>
+                      <td>メールアドレス一致の購読情報を取得。</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>MailSubscriptionRepository.findTop200ByOrderByUpdatedAtDesc</code></td>
+                      <td>なし</td>
+                      <td><code>List&lt;MailSubscription&gt;</code></td>
+                      <td><code>SELECT</code></td>
+                      <td>更新日時降順で最大200件取得。</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>MailSubscriptionRepository.findByCreatedAtBetween</code></td>
+                      <td><code>from:LocalDateTime, to:LocalDateTime</code></td>
+                      <td><code>List&lt;MailSubscription&gt;</code></td>
+                      <td><code>SELECT</code></td>
+                      <td>作成日時が範囲内の購読情報を取得。</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>MailSubscriptionRepository.findByUnsubscribedAtBetween</code></td>
+                      <td><code>from:LocalDateTime, to:LocalDateTime</code></td>
+                      <td><code>List&lt;MailSubscription&gt;</code></td>
+                      <td><code>SELECT</code></td>
+                      <td>解除日時が範囲内の購読情報を取得。</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="sec4">
+            <h2 class="section-title"><span class="section-icon">4</span> Service（サービス）</h2>
+
+            <div class="fill-block">
+              <div class="fill-label">reservation-app</div>
+              <div class="ascii-diagram">
+                <pre>
++------------------------------------------------------+
+| <<Service>> ReservationService                       |
+|------------------------------------------------------|
+| - reservationRepository: ReservationRepository       |
+| - slotCapacityRepository: SlotCapacityRepository     |
+|------------------------------------------------------|
+| + getAvailability(course, from, to): AvailabilityResponse
+| + createReservation(request): String                 |
+| + getRecentReservations(): List<AdminReservationDto> |
+| + getAdminSummary(): AdminReservationSummaryDto      |
+| - computeSlotAvailability(course, reserveDate, reserveTime): SlotAvailabilityDto
+| - normalizeCourse(course): String                    |
++------------------------------------------------------+
+                | uses                         | uses
+                v                              v
++-----------------------------------+    +-----------------------------------+
+| <<Repository>> ReservationRepository |  | <<Repository>> SlotCapacityRepository |
++-----------------------------------+    +-----------------------------------+
+
+
++------------------------------------------------------+
+| <<Service>> MailSubscriptionService                  |
+|------------------------------------------------------|
+| - mailSubscriptionRepository: MailSubscriptionRepository
+|------------------------------------------------------|
+| + register(rawEmail): MailSubscriptionResponse       |
+| + unsubscribe(rawEmail): MailSubscriptionResponse    |
+| + getRecentSubscriptions(): List<AdminMailSubscriptionDto>
+| + getAdminMailSummary(): AdminMailSummaryDto         |
+| - normalizeEmail(email): String                      |
+| - format(value): String                              |
++------------------------------------------------------+
+                | uses
+                v
++-------------------------------------------+
+| <<Repository>> MailSubscriptionRepository |
++-------------------------------------------+
+
+                </pre>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="sec5">
+            <h2 class="section-title"><span class="section-icon">5</span> Controller（コントローラー）</h2>
+
+            <div class="fill-block">
+              <div class="fill-label">reservation-app</div>
+              <div class="ascii-diagram">
+                <pre>
++------------------------------------------------------+
+| <<RestController>> ReservationController             |
+|------------------------------------------------------|
+| - reservationService: ReservationService             |
+|------------------------------------------------------|
+| + availability(course, from, to): AvailabilityResponse
+| + createReservation(request): ReservationResponse    |
++------------------------------------------------------+
+
++------------------------------------------------------+
+| <<RestController>> MailSubscriptionController        |
+|------------------------------------------------------|
+| - mailSubscriptionService: MailSubscriptionService   |
+|------------------------------------------------------|
+| + register(request): MailSubscriptionResponse        |
+| + unsubscribe(request): MailSubscriptionResponse     |
++------------------------------------------------------+
+
++------------------------------------------------------+
+| <<RestController>> AdminController                   |
+|------------------------------------------------------|
+| - reservationService: ReservationService             |
+| - mailSubscriptionService: MailSubscriptionService   |
+|------------------------------------------------------|
+| + reservations(): List<AdminReservationDto>          |
+| + reservationSummary(): AdminReservationSummaryDto   |
+| + mailSubscriptions(): List<AdminMailSubscriptionDto>|
+| + mailSummary(): AdminMailSummaryDto                 |
+| + me(authentication): AdminMeDto                     |
++------------------------------------------------------+
+
++------------------------------------------------------+
+| <<RestController>> CsrfTokenController               |
+|------------------------------------------------------|
+| + csrfToken(csrfToken): Map<String, String>          |
++------------------------------------------------------+
+
++------------------------------------------------------+
+| <<Controller>> RootRedirectController                |
+|------------------------------------------------------|
+| + root(): String                                     |
++------------------------------------------------------+
+                </pre>
+              </div>
+              <div style="margin-top: 16px;">
+                <table class="doc-table">
+                  <thead>
+                    <tr>
+                      <th>メソッド</th>
+                      <th>HTTP</th>
+                      <th>URL</th>
+                      <th>説明</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="template-row">
+                      <td><code>ReservationController.availability</code></td>
+                      <td><code>GET</code></td>
+                      <td><code>/api/reservations/availability</code></td>
+                      <td>コース・期間を指定して空き状況を取得</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>ReservationController.createReservation</code></td>
+                      <td><code>POST</code></td>
+                      <td><code>/api/reservations</code></td>
+                      <td>予約を作成</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>MailSubscriptionController.register</code></td>
+                      <td><code>POST</code></td>
+                      <td><code>/api/mail/subscriptions/register</code></td>
+                      <td>メール購読を登録</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>MailSubscriptionController.unsubscribe</code></td>
+                      <td><code>POST</code></td>
+                      <td><code>/api/mail/subscriptions/unsubscribe</code></td>
+                      <td>メール購読を解除</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>AdminController.reservations</code></td>
+                      <td><code>GET</code></td>
+                      <td><code>/api/admin/reservations</code></td>
+                      <td>管理用予約一覧を取得</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>AdminController.reservationSummary</code></td>
+                      <td><code>GET</code></td>
+                      <td><code>/api/admin/reservation-summary</code></td>
+                      <td>管理用予約サマリを取得</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>AdminController.mailSubscriptions</code></td>
+                      <td><code>GET</code></td>
+                      <td><code>/api/admin/mail-subscriptions</code></td>
+                      <td>管理用メール購読一覧を取得</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>AdminController.mailSummary</code></td>
+                      <td><code>GET</code></td>
+                      <td><code>/api/admin/mail-summary</code></td>
+                      <td>管理用メール購読サマリを取得</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>AdminController.me</code></td>
+                      <td><code>GET</code></td>
+                      <td><code>/api/admin/me</code></td>
+                      <td>ログイン中管理ユーザー情報を取得</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>CsrfTokenController.csrfToken</code></td>
+                      <td><code>GET</code></td>
+                      <td><code>/api/csrf-token</code></td>
+                      <td>CSRFトークン情報を取得</td>
+                    </tr>
+                    <tr class="template-row">
+                      <td><code>RootRedirectController.root</code></td>
+                      <td><code>GET</code></td>
+                      <td><code>/</code></td>
+                      <td>ルートアクセスを <code>/index.html</code> へリダイレクト</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="sec6">
+            <h2 class="section-title"><span class="section-icon">6</span> クラス間の依存関係</h2>
+
+            <div class="fill-block">
+              <div class="fill-label">依存関係図</div>
+              <div class="ascii-diagram">
+                <pre>
++--------------------------- Controller Layer ---------------------------+
+| [ReservationController]      [MailSubscriptionController]             |
+| [AdminController]            [CsrfTokenController] [RootRedirectController] |
++-----------------------------------------------------------------------+
+              |                        |
+              | depends on             | (Csrf/RedirectはService非依存)
+              v                        v
++---------------------------- Service Layer -----------------------------+
+| [ReservationService]        [MailSubscriptionService]                 |
++-----------------------------------------------------------------------+
+              |                              |
+              | depends on                   | depends on
+              v                              v
++--------------------------- Repository Layer ---------------------------+
+| [ReservationRepository]  [SlotCapacityRepository]  [MailSubscriptionRepository] |
++-----------------------------------------------------------------------+
+              |                    |                         |
+              | handles            | handles                 | handles
+              v                    v                         v
++----------------------------- Entity Layer -----------------------------+
+| [Reservation]             [SlotCapacity]            [MailSubscription] |
++-----------------------------------------------------------------------+
+
+Cross-cutting:
+- Controller/Service は [DTOs] を介して入出力データを受け渡し
+- [CsrfTokenController] は Spring Security の CsrfToken を直接利用
+                </pre>
+              </div>
+            </div>
+
+
+          </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+
+</html>

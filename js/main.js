@@ -54,6 +54,7 @@ function generateNavigation() {
         <div class="nav-group-title">設計資料</div>
         <a href="${docsPath}05-specification.html"><span class="nav-number">05</span> 仕様書</a>
         <a href="${docsPath}06-test-report.html"><span class="nav-number">06</span> テスト報告書</a>
+        <a href="${docsPath}07-system-flow.html"><span class="nav-number">07</span> システムフロー図</a>
       </div>
     </nav>
     <div class="sidebar-footer">

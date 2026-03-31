@@ -14,6 +14,21 @@
       overflow-wrap: anywhere;
       word-break: break-word;
     }
+
+    #sec2 .table-scroll {
+      overflow-x: auto;
+    }
+
+    #sec2 .doc-table.table-fit {
+      table-layout: fixed;
+    }
+
+    #sec2 .doc-table.table-fit th,
+    #sec2 .doc-table.table-fit td {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      white-space: normal;
+    }
   </style>
 </head>
 
@@ -103,7 +118,8 @@
 
           <div class="fill-block">
             <div class="fill-label">テーブル名：reservation</div>
-            <table class="doc-table">
+            <div class="table-scroll">
+              <table class="doc-table table-fit">
               <thead>
                 <tr>
                   <th>カラム名</th>
@@ -196,7 +212,8 @@
                   <td>作成日時</td>
                 </tr>
               </tbody>
-            </table>
+              </table>
+            </div>
           </div>
 
 
@@ -253,7 +270,8 @@
 
           <div class="fill-block">
             <div class="fill-label">テーブル名：mail_subscription</div>
-            <table class="doc-table">
+            <div class="table-scroll">
+              <table class="doc-table table-fit">
               <thead>
                 <tr>
                   <th>カラム名</th>
@@ -314,7 +332,8 @@
                   <td>解除日時（解除時のみ設定）</td>
                 </tr>
               </tbody>
-            </table>
+              </table>
+            </div>
 
           </div>
         </section>

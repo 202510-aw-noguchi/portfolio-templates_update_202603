@@ -8,6 +8,27 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .schedule-table {
+      font-size: 13px;
+      border-color: var(--gray-200);
+    }
+
+    .schedule-table thead th {
+      padding: 10px 14px;
+      background: var(--gray-100);
+      color: var(--gray-700);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .schedule-table tbody td {
+      padding: 10px 14px;
+      line-height: 1.5;
+      border-bottom: 1px solid var(--gray-100);
+    }
+  </style>
 </head>
 
 <body>
@@ -35,11 +56,11 @@
             香水メーカー｜Webサイトリニューアル</h2>
 
           <div class="fill-block">
-            <img src="image/SS_ccorp.png">
+            <img src="image/SS_ccorp.png" alt="Webサイトイメージ">
             <br>
             <div class="fill-label">作品概要</div>
             <p>香水メーカーのWebサイトリニューアル。<br>
-              申込数の低迷する香水メーカー主催のワークショップのテコ入れ策としてWebサイトのリニューアル依頼を受ける。</p>
+              申込数の低迷する香水メーカー主催のワークショップのテコ入れ策として、Webサイトのリニューアル依頼を受けた…という仮定での制作課題となります。</p>
             <br>
             <div class="fill-label">使用技術</div>
             <p>
@@ -54,51 +75,54 @@
             <br>
             <div class="fill-label">工夫した点・アピールポイント</div>
             <p>
-              既存顧客のUXを考慮し、2カラム構成を維持しながらマルチデバイス対応とすることで、スムーズな移行を狙う。<br>
-              ブランディングの観点から、同名ブランドとして実施するワークショップのトンマナを見直し（チープ→やや高級）。
+              既存顧客のUXを考慮し、2カラム構成を維持しながらマルチデバイス対応とすることで、スムーズな移行を狙いました。<br>
+              ブランディングの観点から、同名ブランドとして実施するワークショップのトンマナを見直しています（チープ→やや高級）。
             </p>
             <br>
             <div class="fill-label">製作期間</div>
-            <p>2026年3月　約3週間</p>
-            <br>
-            <table class="doc-table">
+            <table class="doc-table schedule-table">
               <thead>
                 <tr>
-                  <th>フェーズ</th>
                   <th>期間</th>
-                  <th>主な作業内容</th>
+                  <th>フェーズ</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>企画・調査</td>
-                  <td>第1週</td>
-                  <td>（作業内容を入力）</td>
+                  <td>2月20日（金）</td>
+                  <td>オリエンテーション</td>
                 </tr>
                 <tr>
-                  <td>設計</td>
-                  <td>第2週</td>
-                  <td>（作業内容を入力）</td>
+                  <td>2月26日（木）</td>
+                  <td>企画ご提案</td>
                 </tr>
                 <tr>
-                  <td>デザイン</td>
-                  <td>第3週</td>
-                  <td>（作業内容を入力）</td>
+                  <td>3月11日（水）</td>
+                  <td>ワイヤーフレームご提案</td>
                 </tr>
                 <tr>
-                  <td>実装</td>
-                  <td>第4〜6週</td>
-                  <td>（作業内容を入力）</td>
+                  <td>3月13日（金）</td>
+                  <td>Feedback受領、修正校提出、FIX</td>
                 </tr>
                 <tr>
-                  <td>テスト・修正</td>
-                  <td>第7週</td>
-                  <td>（作業内容を入力）</td>
+                  <td>3月16日（月）～3月20日（金）</td>
+                  <td>デザイン着手～ご提案</td>
                 </tr>
                 <tr>
-                  <td>振り返り</td>
-                  <td>第8週</td>
-                  <td>（作業内容を入力）</td>
+                  <td>3月25日（水）～3月27日（金）</td>
+                  <td>Feedback受領～修正校提出、FIX</td>
+                </tr>
+                <tr>
+                  <td>3月30日（月）～4月3日（金）</td>
+                  <td>実装着手～ステージングサイト提出</td>
+                </tr>
+                <tr>
+                  <td>4月8日（水）</td>
+                  <td>Feedback受領、以降随時確認依頼</td>
+                </tr>
+                <tr>
+                  <td>4月10日（金）JST10:00</td>
+                  <td>本番公開</td>
                 </tr>
               </tbody>
             </table>
@@ -145,7 +169,7 @@
           </h2>
 
           <div class="fill-block">
-            <img src="image/SS_pocketboard.png">
+            <img src="image/SS_pocketboard.png" alt="ポケットボードイメージ">
             <br>
             <div class="fill-label">作品概要</div>
             <p>進み具合、すぐ見える "PocketBoard（ポケットボード）"<br>
@@ -163,8 +187,8 @@
             <br>
             <div class="fill-label">工夫した点・アピールポイント</div>
             <p>
-              UI/UXの工夫として、タスクのステータスを視覚的にわかりやすく表示する工夫をした。<br>
-              また、タスクの追加・編集・削除機能をシンプルに実装し、ユーザーが直感的に操作できるようにした。
+              UI/UXの工夫として、タスクのステータスを視覚的にわかりやすく表示する工夫をしました。<br>
+              また、タスクの追加・編集・削除機能をシンプルに実装し、ユーザーが直感的に操作できるようにしました。
             </p>
           </div>
 
@@ -174,6 +198,40 @@
             <a href="https://github.com/202510-aw-noguchi/Task-List">GitHubリポジトリ</a>
           </div>
         </section>
+
+        <h2 class="section-title"><span class="section-icon"><span class="nav-number">02</span></span>その他
+          制作物　佐藤医院Webサイトリニューアル
+        </h2>
+
+        <div class="fill-block">
+          <img src="image/SS_satoclinic.png" alt="佐藤医院Webサイトイメージ">
+          <br>
+          <div class="fill-label">作品概要</div>
+          <p>佐藤医院のWebサイトをリニューアルするプロジェクト。<br>
+            患者の利便性向上と医療情報の正確な提供を主軸に構成を検討しました。テキスト・画像は先方提供、キャッチコピーは新規制作です。<br>
+            ※予約サイトについては外部システムと連携予定となります。</p>
+          <br>
+          <div class="fill-label">使用技術</div>
+          <p><strong>フロントエンド：</strong>HTML / CSS / JavaScript</p>
+          <p><strong>その他：</strong>Git / Figma</p>
+          <br>
+          <div class="fill-label">担当範囲</div>
+          <p>企画提案・デザイン・フロントエンド</p>
+          <br>
+          <div class="fill-label">工夫した点・アピールポイント</div>
+          <p>
+            幅広い年齢層の患者が利用することを考慮し、シンプルでわかりやすいUIを心がけました。<br>
+            また、医療情報の正確な提供を重視し、必要な情報がすぐに見つかるようにサイト構成を工夫しました。
+          </p>
+        </div>
+
+        <div class="fill-block">
+          <div class="fill-label">リンク</div>
+          <a href="https://202510-aw-noguchi.github.io/satoclinic_202603/">デモサイト</a><br>
+          <a href="https://github.com/202510-aw-noguchi/satoclinic_202603">GitHubリポジトリ</a>
+        </div>
+        </section>
+
 
       </div>
     </main>

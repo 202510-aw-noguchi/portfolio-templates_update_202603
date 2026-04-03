@@ -28,6 +28,19 @@
       line-height: 1.5;
       border-bottom: 1px solid var(--gray-100);
     }
+
+    .toc .toc-list li a::before {
+      content: none;
+    }
+
+    .toc p,
+    .toc a {
+      font-family: var(--font-ja);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.8;
+      color: var(--text);
+    }
   </style>
 </head>
 
@@ -51,8 +64,19 @@
 
       <div class="doc-body">
 
+        <div class="toc">
+          <p>Webページ</p>
+          <p><a href="#sec1">01　香水メーカー｜Webサイトリニューアル</a><br>
+            <a href="#sec2">02　佐藤医院｜Webサイトリニューアル</a>
+          </p>
+          <p>Webアプリ</p>
+          <p><a href="#sec3">03　PocketBoard</a><br>
+            <a href="#sec4">04　Palette Engine</a>
+          </p>
+        </div>
+
         <section class="section">
-          <h2 class="section-title"><span class="section-icon"><span class="nav-number">01</span></span>
+          <h2 id="sec1" class="section-title"><span class="section-icon"><span class="nav-number">01</span></span>
             香水メーカー｜Webサイトリニューアル</h2>
 
           <div class="fill-block">
@@ -146,7 +170,8 @@
               <li><a href="./docs/03-wireframe.html"><span class="flow-links-num">03</span><span>ワイヤーフレーム</span></a>
               </li>
               <li><a href="./docs/04-design-guide.html"><span
-                    class="flow-links-num">04</span><span>デザインガイドライン</span></a></li>
+                    class="flow-links-num">04</span><span>デザインガイドライン</span></a>
+              </li>
               <li><a href="./docs/05-specification.html"><span class="flow-links-num">05</span><span>仕様書</span></a></li>
               <li><a href="./docs/06-db-design.html"><span class="flow-links-num">06</span><span>データベース設計書</span></a>
               </li>
@@ -165,8 +190,8 @@
             <a href="#">GitHubリポジトリ</a>
           </div>
 
-          <h2 class="section-title"><span class="section-icon"><span class="nav-number">02</span></span>その他
-            制作物　佐藤医院Webサイトリニューアル
+          <h2 id="sec2" class="section-title"><span class="section-icon"><span class="nav-number">02</span></span>その他
+            制作物　佐藤医院｜Webサイトリニューアル
           </h2>
 
           <div class="fill-block">
@@ -198,7 +223,7 @@
           </div>
 
 
-          <h2 class="section-title"><span class="section-icon"><span class="nav-number">03</span></span>その他
+          <h2 id="sec3" class="section-title"><span class="section-icon"><span class="nav-number">03</span></span>その他
             制作物　PocketBoard（ポケットボード）
           </h2>
 
@@ -233,7 +258,7 @@
             <a href="https://github.com/202510-aw-noguchi/PocketBoard_202603">GitHubリポジトリ</a>
           </div>
 
-          <h2 class="section-title"><span class="section-icon"><span class="nav-number">04</span></span>その他
+          <h2 id="sec4" class="section-title"><span class="section-icon"><span class="nav-number">04</span></span>その他
             制作物　Palette Engine（パレットエンジン）
           </h2>
 

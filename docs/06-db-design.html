@@ -52,24 +52,6 @@
 
       <div class="doc-body">
 
-        <div class="external-link-box">
-          <div class="external-link-box-title">
-            <span class="material-symbols-outlined">link</span>
-            詳細ドキュメント（Google スプレッドシート）
-          </div>
-          <div class="external-link-box-desc">
-            このページは概要のみを記載しています。詳細なDB設計書は以下のリンクからご確認ください。
-          </div>
-          <div class="external-link-input">
-            <input type="text" placeholder="https://docs.google.com/spreadsheets/d/xxxxx" id="external-link-08">
-            <a href="#" class="link-btn"
-              onclick="window.open(document.getElementById('external-link-08').value || 'https://docs.google.com', '_blank'); return false;">
-              <span class="material-symbols-outlined">open_in_new</span>
-              開く
-            </a>
-          </div>
-        </div>
-
         <div class="toc">
           <div class="toc-title">目次</div>
           <ol class="toc-list">
@@ -120,98 +102,98 @@
             <div class="fill-label">テーブル名：reservation</div>
             <div class="table-scroll">
               <table class="doc-table table-fit">
-              <thead>
-                <tr>
-                  <th>カラム名</th>
-                  <th>データ型</th>
-                  <th>NULL</th>
-                  <th>デフォルト</th>
-                  <th>制約</th>
-                  <th>説明</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="template-row">
-                  <td>id</td>
-                  <td>BIGINT</td>
-                  <td>NO</td>
-                  <td>AUTO_INCREMENT</td>
-                  <td>PK</td>
-                  <td>予約ID</td>
-                </tr>
-                <tr class="template-row">
-                  <td>reservation_number</td>
-                  <td>VARCHAR(32)</td>
-                  <td>NO</td>
-                  <td>なし</td>
-                  <td>UNIQUE</td>
-                  <td>予約番号（例: `RSV-YYYYMMDD-00001`）</td>
-                </tr>
-                <tr class="template-row">
-                  <td>course</td>
-                  <td>VARCHAR(20)</td>
-                  <td>NO</td>
-                  <td>なし</td>
-                  <td>なし</td>
-                  <td>コース種別（`classic` / `luxe`）</td>
-                </tr>
-                <tr class="template-row">
-                  <td>reserve_date</td>
-                  <td>DATE</td>
-                  <td>NO</td>
-                  <td>なし</td>
-                  <td>なし</td>
-                  <td>予約日</td>
-                </tr>
-                <tr class="template-row">
-                  <td>reserve_time</td>
-                  <td>VARCHAR(20)</td>
-                  <td>NO</td>
-                  <td>なし</td>
-                  <td>なし</td>
-                  <td>予約時間帯（例: `14:00-15:00`）</td>
-                </tr>
-                <tr class="template-row">
-                  <td>participant_count</td>
-                  <td>INTEGER</td>
-                  <td>NO</td>
-                  <td>なし</td>
-                  <td>なし</td>
-                  <td>参加人数</td>
-                </tr>
-                <tr class="template-row">
-                  <td>contact_name</td>
-                  <td>VARCHAR(120)</td>
-                  <td>NO</td>
-                  <td>なし</td>
-                  <td>なし</td>
-                  <td>申込者名</td>
-                </tr>
-                <tr class="template-row">
-                  <td>contact_phone</td>
-                  <td>VARCHAR(40)</td>
-                  <td>NO</td>
-                  <td>なし</td>
-                  <td>なし</td>
-                  <td>連絡先電話番号</td>
-                </tr>
-                <tr class="template-row">
-                  <td>contact_email</td>
-                  <td>VARCHAR(160)</td>
-                  <td>NO</td>
-                  <td>なし</td>
-                  <td>なし</td>
-                  <td>連絡先メールアドレス</td>
-                </tr>
-                <tr class="template-row">
-                  <td>created_at</td>
-                  <td>TIMESTAMP</td>
-                  <td>NO</td>
-                  <td>アプリ側で現在日時設定</td>
-                  <td>なし</td>
-                  <td>作成日時</td>
-                </tr>
-              </tbody>
+                <thead>
+                  <tr>
+                    <th>カラム名</th>
+                    <th>データ型</th>
+                    <th>NULL</th>
+                    <th>デフォルト</th>
+                    <th>制約</th>
+                    <th>説明</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="template-row">
+                    <td>id</td>
+                    <td>BIGINT</td>
+                    <td>NO</td>
+                    <td>AUTO_INCREMENT</td>
+                    <td>PK</td>
+                    <td>予約ID</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>reservation_number</td>
+                    <td>VARCHAR(32)</td>
+                    <td>NO</td>
+                    <td>なし</td>
+                    <td>UNIQUE</td>
+                    <td>予約番号（例: `RSV-YYYYMMDD-00001`）</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>course</td>
+                    <td>VARCHAR(20)</td>
+                    <td>NO</td>
+                    <td>なし</td>
+                    <td>なし</td>
+                    <td>コース種別（`classic` / `luxe`）</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>reserve_date</td>
+                    <td>DATE</td>
+                    <td>NO</td>
+                    <td>なし</td>
+                    <td>なし</td>
+                    <td>予約日</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>reserve_time</td>
+                    <td>VARCHAR(20)</td>
+                    <td>NO</td>
+                    <td>なし</td>
+                    <td>なし</td>
+                    <td>予約時間帯（例: `14:00-15:00`）</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>participant_count</td>
+                    <td>INTEGER</td>
+                    <td>NO</td>
+                    <td>なし</td>
+                    <td>なし</td>
+                    <td>参加人数</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>contact_name</td>
+                    <td>VARCHAR(120)</td>
+                    <td>NO</td>
+                    <td>なし</td>
+                    <td>なし</td>
+                    <td>申込者名</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>contact_phone</td>
+                    <td>VARCHAR(40)</td>
+                    <td>NO</td>
+                    <td>なし</td>
+                    <td>なし</td>
+                    <td>連絡先電話番号</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>contact_email</td>
+                    <td>VARCHAR(160)</td>
+                    <td>NO</td>
+                    <td>なし</td>
+                    <td>なし</td>
+                    <td>連絡先メールアドレス</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>created_at</td>
+                    <td>TIMESTAMP</td>
+                    <td>NO</td>
+                    <td>アプリ側で現在日時設定</td>
+                    <td>なし</td>
+                    <td>作成日時</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
@@ -272,66 +254,66 @@
             <div class="fill-label">テーブル名：mail_subscription</div>
             <div class="table-scroll">
               <table class="doc-table table-fit">
-              <thead>
-                <tr>
-                  <th>カラム名</th>
-                  <th>データ型</th>
-                  <th>NULL</th>
-                  <th>デフォルト</th>
-                  <th>制約</th>
-                  <th>説明</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="template-row">
-                  <td>id</td>
-                  <td>BIGINT</td>
-                  <td>NO</td>
-                  <td>AUTO_INCREMENT</td>
-                  <td>PK</td>
-                  <td>購読ID</td>
-                </tr>
-                <tr class="template-row">
-                  <td>email</td>
-                  <td>VARCHAR(160)</td>
-                  <td>NO</td>
-                  <td>なし</td>
-                  <td>UNIQUE</td>
-                  <td>購読メールアドレス</td>
-                </tr>
-                <tr class="template-row">
-                  <td>active</td>
-                  <td>BOOLEAN</td>
-                  <td>NO</td>
-                  <td>なし</td>
-                  <td>なし</td>
-                  <td>購読状態（`true`:購読中, `false`:解除済み）</td>
-                </tr>
-                <tr class="template-row">
-                  <td>created_at</td>
-                  <td>TIMESTAMP</td>
-                  <td>NO</td>
-                  <td>アプリ側で現在日時設定</td>
-                  <td>なし</td>
-                  <td>作成日時</td>
-                </tr>
-                <tr class="template-row">
-                  <td>updated_at</td>
-                  <td>TIMESTAMP</td>
-                  <td>NO</td>
-                  <td>アプリ側で現在日時設定</td>
-                  <td>なし</td>
-                  <td>更新日時</td>
-                </tr>
-                <tr class="template-row">
-                  <td>unsubscribed_at</td>
-                  <td>TIMESTAMP</td>
-                  <td>YES</td>
-                  <td>なし</td>
-                  <td>なし</td>
-                  <td>解除日時（解除時のみ設定）</td>
-                </tr>
-              </tbody>
+                <thead>
+                  <tr>
+                    <th>カラム名</th>
+                    <th>データ型</th>
+                    <th>NULL</th>
+                    <th>デフォルト</th>
+                    <th>制約</th>
+                    <th>説明</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="template-row">
+                    <td>id</td>
+                    <td>BIGINT</td>
+                    <td>NO</td>
+                    <td>AUTO_INCREMENT</td>
+                    <td>PK</td>
+                    <td>購読ID</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>email</td>
+                    <td>VARCHAR(160)</td>
+                    <td>NO</td>
+                    <td>なし</td>
+                    <td>UNIQUE</td>
+                    <td>購読メールアドレス</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>active</td>
+                    <td>BOOLEAN</td>
+                    <td>NO</td>
+                    <td>なし</td>
+                    <td>なし</td>
+                    <td>購読状態（`true`:購読中, `false`:解除済み）</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>created_at</td>
+                    <td>TIMESTAMP</td>
+                    <td>NO</td>
+                    <td>アプリ側で現在日時設定</td>
+                    <td>なし</td>
+                    <td>作成日時</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>updated_at</td>
+                    <td>TIMESTAMP</td>
+                    <td>NO</td>
+                    <td>アプリ側で現在日時設定</td>
+                    <td>なし</td>
+                    <td>更新日時</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>unsubscribed_at</td>
+                    <td>TIMESTAMP</td>
+                    <td>YES</td>
+                    <td>なし</td>
+                    <td>なし</td>
+                    <td>解除日時（解除時のみ設定）</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
 
